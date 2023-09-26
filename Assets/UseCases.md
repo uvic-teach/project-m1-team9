@@ -1,3 +1,5 @@
+# MisterED Textual Use Cases
+
 ### UC-1: View Current ED Load
 
 **Description**: The patient is able to view ED queue loads
