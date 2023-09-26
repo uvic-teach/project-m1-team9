@@ -294,12 +294,11 @@ Patient does not confirm they are coming to ED through MR ED system,
 
 **Steps**: 
 
-1. An appropriate in-person location for triage is determined.
-2. The patient is given the location of their in-person triage and told to see a ED staff member at this location.
+1. Patient arrives at ED.
+2. Patient is triaged in person.
+3. Patient identity is verified.
 
 **Issues**: 
-
-- How far in advance of their appointment is the user given appointment time and location //Albert: Aren't there no appointments for triage? Fix?
 
 ---
 
@@ -309,28 +308,31 @@ Patient does not confirm they are coming to ED through MR ED system,
 
 **Actors**:
 
-- Patient (Primary actor)
+- Patient
 - ED
 
 **Assumptions**:
 
 - The patient is able to answer questions in the in person triage.
 - The patient does not want to wait a long time in the ED waiting room if avoidable.
+- The patient has registered for the MisterEd system and is signed in.
 
 **Steps**:
 
-1. An appropriate in-person location for triage is determined.
-2. The patient is given the location of their in-person triage and told to see a ED staff member at this location.
+1. Patient notifies ED that they are registered with MisterEd.
+2. ED updates their queue as they treat patients.
+3. MisterEd sends notifications to patients to come to the ED when they are close to the top of the queue.
 
 **Variations**: 
 The patient will not be seen in a very timely manner then the ED will tell them that through Mr Ed they will be notified of when they should visit the ED. 
 
 **Non-functional**:
-
-
+- Reliable: If this notification doesn't go out, people will miss their spot or chance to get treated.
+- Fault Tolerance: Notifications have to be sent out soon enough that the patient has time to return to keep things moving smoothly.
 
 **Issues**:
 
-- The patient’s information must remain private
+- The patient misses the notification
+- Patient is not connected to the internet or is out of service area
 
 ---
