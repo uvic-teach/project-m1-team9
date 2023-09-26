@@ -350,6 +350,6 @@ The patient will not be seen in a very timely manner then the ED will tell them 
 
 **Issues**:
 
-- The patient’s triage information must remain private
+- The patient’s information must remain private
 
 ---
