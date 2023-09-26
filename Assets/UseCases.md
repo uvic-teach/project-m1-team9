@@ -33,16 +33,24 @@
 **Actors**:
 
 - Patient (Primary actor)
+- Map service
+- Emergency Department
 
-**Assumptions**:
+**Assumptions**: 
+Patient is in the position to be recommended a health solution.
 
 **Steps**:
+1. take the recommended solution from previous use case which could be ED, GP clinic, Medical Hotline.
+2. From the type of care needed locate the closes to the patient using the map
+3. recommend the closes of the required health solution 
 
 **Variations**: 
 
 **Non-functional**:
+-needs to scalable to large datasets of maps
 
 **Issues**:
+- runtime
 
 ---
 
@@ -68,6 +76,78 @@
 **Variations**: 
 
 - The patient cannot be safely triaged virtually so they are given a triage location to travel to and are triaged in person.
+
+**Non-functional**:
+
+- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues.
+- **Usability**: The questionnaire must be simple enough for any user to be able to complete it.
+- **Reliability**: This use-case must be reliable as incorrectly triaging a person could have serious consequences on their health. 
+
+**Issues**:
+
+- The patient’s triage information must remain private
+
+---
+
+### UC-3a: Notify Patient of ED Visit
+
+**Use Case Extension**: UC-3 extends UC-6
+
+**Actors**:
+
+- Patient (Primary actor)
+
+**Assumptions**:
+
+- The patient is able to competently answer the questions on the triage questionnaire. 
+- The patient has successfully signed-in to their MISTER ED account.
+
+**Steps**:
+
+1. The patient answers the questions on the triage questionnaire using drop-down menus for answers (multiple choice).
+2. The inputs are used to automatically determine the next steps for the patient.
+3. The results are given to the patient.
+
+**Variations**: 
+
+- The patient cannot be safely triaged virtually so they are given a triage location to travel to and are triaged in person.
+
+**Non-functional**:
+
+- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues.
+- **Usability**: The questionnaire must be simple enough for any user to be able to complete it.
+- **Reliability**: This use-case must be reliable as incorrectly triaging a person could have serious consequences on their health. 
+
+**Issues**:
+
+- The patient’s triage information must remain private  
+
+---
+
+### UC-3b: Notify Patient of ED Visit
+
+**Use Case Extension**: UC-3 extends UC-2
+
+**Actors**:
+
+- Patient (Primary actor)
+
+**Assumptions**:
+
+- The patient is able to competently answer the questions on the triage questionnaire. 
+- The patient has successfully signed-in to their MISTER ED account.
+
+**Steps**:
+
+1. The patient answers the questions on the triage questionnaire using drop-down menus for answers (multiple choice).
+2. The inputs are used to automatically determine the next steps for the patient.
+3. The results are given to the patient.
+
+**Variations**: 
+
+2a The patients results are compiled so that its optimal to Locate a nearby health solution.
+2b Action is taken based on the results to recommend either GP, ED or Medical hotline.
+3. The results are given to the patient.
 
 **Non-functional**:
 
@@ -166,7 +246,7 @@
 - Patient (Primary actor)
 
 **Assumptions**: 
-Are presented with the correct patient that is in priority to come in to ED visit. 
+System is presented with the correct patient that is in priority to come in to ED visit. 
 
 **Steps**:
 1. recieve the patient that needs to be notified to com into the ER
@@ -244,53 +324,36 @@ Patient does not confirm they are coming to ED through MR ED system,
 
 ---
 
-// From Main to edit/add to above
+### UC-7a: 
 
-### UC-5: Title
+**Use Case Extension**: UC-6 extends UC-7
 
-**Description**: Register to Mr ED
+**Actors**:
 
-**Actors**: Patient, BC health database
+- Patient (Primary actor)
+- ED
 
-**Assumptions**: 
+**Assumptions**:
 
-- Patient does not have an authorized account in the Mr ED system
-- Mr ED system has access to BC health Database
+- The patient is able to answer questions in the in person triage.
+- The patient does not want to wait a long time in the ED waiting room if avoidable.
 
-**Steps**: 
+**Steps**:
 
-1. Patient fills in Username
-2. Patient fills in health info
-   2.1 patient gives health number
-   2.2 number is checked against database
-3. Patient gives password
-4. patient confirms password
+1. An appropriate in-person location for triage is determined.
+2. The patient is given the location of their in-person triage and told to see a ED staff member at this location.
 
 **Variations**: 
-patient puts in wrong health number - returns an error
+The patient will not be seen in a very timely manner then the ED will tell them that through Mr Ed they will be notified of when they should visit the ED. 
+
 **Non-functional**:
 
-**Issues**: 
-cyber security, leaking patient health info
+- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues.
+- **Usability**: The questionnaire must be simple enough for any user to be able to complete it.
+- **Reliability**: This use-case must be reliable as incorrectly triaging a person could have serious consequences on their health. 
+
+**Issues**:
+
+- The patient’s triage information must remain private
 
 ---
-
-### UC-6 extends UC-3: Notify Patient of ED visit 
-
-**description**: notify patient of ED vist
-
-**change**: want to alert patient that they should now arrive to the ER room so they can be helpped
-
-**Steps**: 
-1. recieve the patient that needs to be notified to com into the ER
-2. send a notification to patient for patient to confirm they are coming
-3. wait for patient to confirm
-4. Patient confirms that they are coming to ED
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
-cyber security
-k
