@@ -2,7 +2,7 @@
 
 ## Patient
 
-### UC-P1
+### UC-1
 
 **Description**: Have the patient log into the Mr ED system so other actions can be performed within the system.
 
@@ -43,10 +43,16 @@
 - Hide plain password text 
 - Patient not having a PHN
 
+---
+
+###UC-1a
+
+**Description**: Register to Mister Ed
+
 
 ---
 
-### UC-P2
+### UC-2
 
 **Description**: Take Virtual Triage 
 
@@ -81,7 +87,7 @@
 
 ---
 
-### UC-P3
+### UC-3
 
 **Description**: The patient is able to view ED queue loads
 
@@ -108,7 +114,7 @@
 
 ---
 
-### UC-P4
+### UC-4
 
 **Description**: Patient enters queue to be notified of ED arrival time
 
@@ -171,7 +177,7 @@ Emails, phone notifications must arrive seconds after being dispatched
 
 ---
 
-### UC-N2
+### UC-5
 
 **Description**: View ED current loads
 
@@ -221,7 +227,7 @@ Emails, phone notifications must arrive seconds after being dispatched
 
 ---
 
-### UC-D2
+### UC-6
 
 **Description**: 
 
@@ -255,7 +261,7 @@ Emails, phone notifications must arrive seconds after being dispatched
 
 ---
 
-### UC-T2
+### UC-7
 
 **Description**: Patient is recommended to take an over the counter (OTC) medicatio
 
@@ -277,7 +283,7 @@ Emails, phone notifications must arrive seconds after being dispatched
 
 ---
 
-### UC-T3
+### UC-8
 
 **Description**: Patient is recommended to contact a medical hotline
 
@@ -299,7 +305,7 @@ Emails, phone notifications must arrive seconds after being dispatched
 
 ---
 
-### UC-T4
+### UC-9
 
 **Description**: 
 
