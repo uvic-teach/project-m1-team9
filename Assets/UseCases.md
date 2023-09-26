@@ -137,6 +137,40 @@ Patient is in the position to be recommended a health solution.
 
 - The patient’s triage information must remain private
 
+### UC-3a: Real Triage 
+
+**Description**: The patient takes a real triage through the ED system
+
+**Actors**:
+
+- Patient
+- ED
+
+**Assumptions**:
+- The patient is unable to be safely triaged virtually.
+- The patient is able to answer questions in the in person triage.
+- The ED can observe the condition of the patient.
+
+**Steps**:
+
+1. The patient is told to go to the closest ED for an in person triage.
+2. Patient arrives at the ED.
+3. Patient is triaged in person.
+
+**Variations**: 
+
+**Non-functional**:
+
+- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues
+- **Usability**: The instruction to go to the ED should be clear and concise
+- **Reliability**: This use-case must be reliable as failing to notify them to get triaged in person could lead to negative health affects 
+
+**Issues**:
+
+- Patient doesn't go to the ED
+- Patient forgets that they were notified that they should get triaged in person
+- Notifications are blocked by the patient
+
 ---
 
 ### UC-4: Sign into Mister Ed
@@ -279,7 +313,7 @@ Patient does not confirm they are coming to ED through MR ED system,
 
 ---
 
-### UC-7: In Person Triage
+### UC-7: Real Triage
 
 **Description**: The patient is told to receive triage in-person at a specificed location
 
@@ -290,7 +324,8 @@ Patient does not confirm they are coming to ED through MR ED system,
 
 **Assumptions**: 
 
-- The patient was unable to virtually complete triage
+- The patient is able to answer questions in the in person triage.
+- The ED can observe the condition of the patient.
 
 **Steps**: 
 
