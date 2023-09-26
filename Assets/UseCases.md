@@ -348,9 +348,7 @@ The patient will not be seen in a very timely manner then the ED will tell them 
 
 **Non-functional**:
 
-- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues.
-- **Usability**: The questionnaire must be simple enough for any user to be able to complete it.
-- **Reliability**: This use-case must be reliable as incorrectly triaging a person could have serious consequences on their health. 
+
 
 **Issues**:
 
