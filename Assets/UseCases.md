@@ -52,6 +52,56 @@ Patient is in the position to be recommended a health solution.
 **Issues**:
 - runtime
 
+### UC-2a: View Current ED Load 
+
+**Description**: 
+
+**Actors**:
+
+- Patient (Primary actor)
+- Emergency Department
+
+**Assumptions**: 
+Patient is in the position to be recommended a health solution.
+
+**Steps**:
+1. take the recommended solution from previous use case which could be ED, GP clinic, Medical Hotline.
+2. From the type of care needed locate the closes to the patient using the map
+3. recommend the closes of the required health solution 
+
+**Variations**: 
+
+**Non-functional**:
+-needs to scalable to large datasets of maps
+
+**Issues**:
+- runtime
+
+### UC-2b: Take Virtual Triage
+
+**Description**: 
+
+**Actors**:
+
+- Patient (Primary actor)
+- Emergency Department
+
+**Assumptions**: 
+Patient is in the position to be recommended a health solution.
+
+**Steps**:
+1. take the recommended solution from previous use case which could be ED, GP clinic, Medical Hotline.
+2. From the type of care needed locate the closes to the patient using the map
+3. recommend the closes of the required health solution 
+
+**Variations**: 
+
+**Non-functional**:
+-needs to scalable to large datasets of maps
+
+**Issues**:
+- runtime
+
 ---
 
 ### UC-3: Take Virtual Triage 
@@ -74,80 +124,8 @@ Patient is in the position to be recommended a health solution.
 3. The results are given to the patient.
 
 **Variations**: 
-
-- The patient cannot be safely triaged virtually so they are given a triage location to travel to and are triaged in person.
-
-**Non-functional**:
-
-- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues.
-- **Usability**: The questionnaire must be simple enough for any user to be able to complete it.
-- **Reliability**: This use-case must be reliable as incorrectly triaging a person could have serious consequences on their health. 
-
-**Issues**:
-
-- The patient’s triage information must remain private
-
----
-
-### UC-3a: Notify Patient of ED Visit
-
-**Use Case Extension**: UC-3 extends UC-6
-
-**Actors**:
-
-- Patient (Primary actor)
-
-**Assumptions**:
-
-- The patient is able to competently answer the questions on the triage questionnaire. 
-- The patient has successfully signed-in to their MISTER ED account.
-
-**Steps**:
-
-1. The patient answers the questions on the triage questionnaire using drop-down menus for answers (multiple choice).
-2. The inputs are used to automatically determine the next steps for the patient.
-3. The results are given to the patient.
-
-**Variations**: 
-
-- The patient cannot be safely triaged virtually so they are given a triage location to travel to and are triaged in person.
-
-**Non-functional**:
-
-- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues.
-- **Usability**: The questionnaire must be simple enough for any user to be able to complete it.
-- **Reliability**: This use-case must be reliable as incorrectly triaging a person could have serious consequences on their health. 
-
-**Issues**:
-
-- The patient’s triage information must remain private  
-
----
-
-### UC-3b: Notify Patient of ED Visit
-
-**Use Case Extension**: UC-3 extends UC-2
-
-**Actors**:
-
-- Patient (Primary actor)
-
-**Assumptions**:
-
-- The patient is able to competently answer the questions on the triage questionnaire. 
-- The patient has successfully signed-in to their MISTER ED account.
-
-**Steps**:
-
-1. The patient answers the questions on the triage questionnaire using drop-down menus for answers (multiple choice).
-2. The inputs are used to automatically determine the next steps for the patient.
-3. The results are given to the patient.
-
-**Variations**: 
-
-2a The patients results are compiled so that its optimal to Locate a nearby health solution.
-2b Action is taken based on the results to recommend either GP, ED or Medical hotline.
-3. The results are given to the patient.
+2ba. The patients results are compiled so that its optimal to Locate a nearby health solution.
+2b. Action is taken based on the results to recommend either GP, OTC medication, ED, or medical hotline.
 
 **Non-functional**:
 
@@ -243,10 +221,13 @@ Patient is in the position to be recommended a health solution.
 **Description**: By end of usecase Patient has been notified to come into ER  
 
 **Actors**
-- Patient (Primary actor)
+- Patient
+- ED
 
 **Assumptions**: 
-System is presented with the correct patient that is in priority to come in to ED visit. 
+- Patient is near the top of the queue and can be treated by the ED soon.
+- Patient is registered and signed into the Mister Ed system.
+- ED knows that the patient is waiting on a notification from them to arrive to the ED and not waiting inside the ED.
 
 **Steps**:
 1. recieve the patient that needs to be notified to com into the ER
