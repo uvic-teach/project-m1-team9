@@ -111,7 +111,7 @@
 - Site security
 - Encryption
 
-### UC-4.5: Register to Mister Ed
+### UC-4a: Register to Mister Ed
 
 **Use Case Extension**: UC-5 extends UC-4
 
