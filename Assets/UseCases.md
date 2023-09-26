@@ -195,7 +195,9 @@
 
 **Description**: 
 
-**Actors**:
+
+**description**: notify patient of ED vist
+
 
 - Patient (Primary actor)
 
@@ -203,14 +205,15 @@
 
 **Steps**:
 
+
 **Variations**: 
 
 **Non-functional**:
 
+
 **Issues**:
 
 ---
-
 
 ### UC-7: In Person Triage
 
