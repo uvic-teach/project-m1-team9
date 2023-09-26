@@ -22,16 +22,6 @@
 3. Patient Inputs valid password
 4. Patient is logged in to Mr ED system 
 
-
-**Variations**: If Patient does not currently have a MISTER ED account the steps will change to:
-
-1. Patient inputs legal name
-2. Patient inputs health care number
-3. Patient creates valid password
-4. Patient confirms password
-5. Patient confirms they are not a robot 
-6. Patient is logged-in to Mr ED system 
-
 **Non-functional**:
 
 - **Intuitive**: must be simple for non tech savvy users to easily log in 
@@ -40,16 +30,31 @@
 **Issues**: 
 
 - Site security
-- Hide plain password text 
-- Patient not having a PHN
-
+- Encryption
+  
 ---
 
-###UC-1a
+### UC-1a
 
-**Description**: Register to Mister Ed
+**Use Case Extension**: UC-1a extends UC-1
 
+**Change**: Register to Mister Ed
 
+**Steps**:  
+
+1. Patient inputs legal name
+2. Patient inputs valid email
+3. Patient inputs health care number
+4. Patient creates valid password
+5. Patient confirms password
+6. Patient confirms they are not a robot
+7. Patient agrees to terms of consent form
+8. Patient is logged-in to Mr ED system 
+
+**Issues**: 
+- Site security
+- Encryption
+  
 ---
 
 ### UC-2
