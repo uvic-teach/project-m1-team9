@@ -124,8 +124,8 @@ Patient is in the position to be recommended a health solution.
 3. The results are given to the patient.
 
 **Variations**: 
-2ba. The patients results are compiled so that its optimal to Locate a nearby health solution.
-2b. Action is taken based on the results to recommend either GP, OTC medication, ED, or medical hotline.
+- The patients results are compiled so that its optimal to Locate a nearby health solution.
+- Virtual triage is not sufficient, real triage is required.
 
 **Non-functional**:
 
