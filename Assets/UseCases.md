@@ -290,3 +290,36 @@ Patient does not confirm they are coming to ED through MR ED system,
 
 ---
 
+### UC-7a: 
+
+**Use Case Extension**: UC-6 extends UC-7
+
+**Actors**:
+
+- Patient (Primary actor)
+- ED
+
+**Assumptions**:
+
+- The patient is able to answer questions in the in person triage.
+- The patient does not want to wait a long time in the ED waiting room if avoidable.
+
+**Steps**:
+
+1. An appropriate in-person location for triage is determined.
+2. The patient is given the location of their in-person triage and told to see a ED staff member at this location.
+
+**Variations**: 
+The patient will not be seen in a very timely manner then the ED will tell them that through Mr Ed they will be notified of when they should visit the ED. 
+
+**Non-functional**:
+
+- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues.
+- **Usability**: The questionnaire must be simple enough for any user to be able to complete it.
+- **Reliability**: This use-case must be reliable as incorrectly triaging a person could have serious consequences on their health. 
+
+**Issues**:
+
+- The patient’s triage information must remain private
+
+---
