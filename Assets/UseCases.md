@@ -176,43 +176,47 @@
 
 **Steps**:  
 
-1. Patient inputs legal name
-2. Patient inputs valid email
-3. Patient inputs health care number
-4. Patient creates valid password
-5. Patient confirms password
-6. Patient confirms they are not a robot
-7. Patient agrees to terms of consent form
-8. Patient is logged-in to Mr ED system 
+1. Patient fills in Username
+2. Patient fills in health info
+   2.1 patient inputs BC health number
+   2.2 BC health number is checked against BC health database
+3. Patient gives password
+4. patient confirms password
+5. Registration completed.
 
 **Issues**: 
 - Site security
+- Possiblity of making public citizens medical information
 - Encryption
   
 ---
 
 ### UC-6: Notify Patient of ED visit 
 
-**Description**: 
+**Description**: By end of usecase Patient has been notified to come into ER  
 
-
-**description**: notify patient of ED vist
-
-
+**Actors**
 - Patient (Primary actor)
 
-**Assumptions**:
+**Assumptions**: 
+Are presented with the correct patient that is in priority to come in to ED visit. 
 
 **Steps**:
-
+1. recieve the patient that needs to be notified to com into the ER
+2. send a notification to patient for patient to confirm they are coming
+3. wait for patient to confirm
+4. Patient confirms that they are coming to ED
 
 **Variations**: 
-
+Patient does not confirm they are coming to ED through MR ED system,
+- Take no Action thorugh system, only perform action if they Show up to ED
 **Non-functional**:
 
 
 **Issues**:
-
+- Site security
+- Possiblity of making public citizens medical information
+- Encryption
 ---
 
 ### UC-7: In Person Triage
@@ -268,8 +272,9 @@ patient puts in wrong health number - returns an error
 **Issues**: 
 cyber security, leaking patient health info
 
+---
 
-### UC-6 extends UC-3 
+### UC-6 extends UC-3: Notify Patient of ED visit 
 
 **description**: notify patient of ED vist
 
@@ -279,7 +284,7 @@ cyber security, leaking patient health info
 1. recieve the patient that needs to be notified to com into the ER
 2. send a notification to patient for patient to confirm they are coming
 3. wait for patient to confirm
-4. They confim that they are coming
+4. Patient confirms that they are coming to ED
 
 **Variations**: 
 
