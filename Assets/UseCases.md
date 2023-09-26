@@ -2,12 +2,12 @@
 
 ## Patient
 
-### UC-1
+### UC-1: Sign into Mister Ed
 
 **Description**: Have the patient log into the Mr ED system so other actions can be performed within the system.
 
 **Actors**:
-- Patient
+- Patient (Primary actor)
 
 **Assumptions**: 
 
@@ -34,11 +34,11 @@
   
 ---
 
-### UC-1a
+### UC-1a: Register to Mister Ed
 
 **Use Case Extension**: UC-1a extends UC-1
 
-**Change**: Register to Mister Ed
+**Change**: Instead of logging into Mister Ed immediately, the patient must first make an account if they do not already have one
 
 **Steps**:  
 
@@ -57,13 +57,13 @@
   
 ---
 
-### UC-2
+### UC-2: Take Virtual Triage 
 
-**Description**: Take Virtual Triage 
+**Description**: The patient takes a virtual triage through Mister Ed
 
 **Actors**:
 
-- Patient 
+- Patient (Primary actor)
 
 **Assumptions**:
 
@@ -92,12 +92,12 @@
 
 ---
 
-### UC-3
+### UC-3: View Current ED Load
 
 **Description**: The patient is able to view ED queue loads
 
 **Actors**:
-- Patient 
+- Patient (Primary actor)
 
 **Assumptions**:
 - The patient has successfully signed-in to their MISTER ED account.
@@ -119,36 +119,23 @@
 
 ---
 
-### UC-4
+### UC-4: Real Triage
 
-**Description**: Patient enters queue to be notified of ED arrival time
+**Description**: The patient is told to receive triage in-person at a specificed location
 
 **Actors**:
 
+- Patient (Primary actor)
 - Emergency department (ED)
-- Patient
 
 **Assumptions**: 
 
-- Patient is logged into their account with correct contact information
-- Patient has completed triage
+- The patient was unable to virtually complete triage
 
 **Steps**: 
-1. Users triage results are used to prioritize their appointment time
-2. Appointment time is updated as ED volume fluctuates
-    1. User is notified if appointment time changes
-3. Closer to their appointment time, the user is sent finalized arrival time and location details for their appointment
 
-**Variations**: 
-
-**Non-functional**:
-
-- Notification system must be fast
-Emails, phone notifications must arrive seconds after being dispatched
-- Arrival time and location must be easy for the user to understand and act on
-    - Integrate with GPS apps (i.e., Google/Apple maps)
-    - Integrate with calendar apps (i.e., Google/Microsoft/Apple calendar)
-
+1. An appropriate in-person location for triage is determined.
+2. The patient is given the location of their in-person triage and told to see a ED staff member at this location.
 
 **Issues**: 
 
