@@ -1,63 +1,50 @@
-# Mr ED Textual Use Cases
+### UC-1: View Current ED Load
 
-## Patient
-
-### UC-1: Sign into Mister Ed
-
-**Description**: Have the patient log into the Mr ED system so other actions can be performed within the system.
+**Description**: The patient is able to view ED queue loads
 
 **Actors**:
 - Patient (Primary actor)
 
-**Assumptions**: 
-
-- Patient has access to the internet
-- Patient has a valid PHN
-- Patient has a valid email
+**Assumptions**:
+- The patient has successfully signed-in to their MISTER ED account.
 
 **Steps**:
+1. The patient selects the option that brings them to the screen that shows them local ED queues.
 
-1. Patient Inputs legal name
-2. Patient inputs health care number
-3. Patient Inputs valid password
-4. Patient is logged in to Mr ED system 
+**Variations**: 
 
 **Non-functional**:
 
-- **Intuitive**: must be simple for non tech savvy users to easily log in 
-- **Forgot password**: must have function to send a replacement password to email. 
+- **Reliability**: The display for the queue loads must be accurate.
 
 **Issues**: 
 
-- Site security
-- Encryption
-  
+- The number of other patients in the queue must not indicate any personal information about the other patients.
+- The queue load is not an accurate representation of ED wait times
+
 ---
 
-### UC-1a: Register to Mister Ed
+### UC-2: Locate Nearby Solution 
 
-**Use Case Extension**: UC-1a extends UC-1
+**Description**: 
 
-**Change**: Instead of logging into Mister Ed immediately, the patient must first make an account if they do not already have one
+**Actors**:
 
-**Steps**:  
+- Patient (Primary actor)
 
-1. Patient inputs legal name
-2. Patient inputs valid email
-3. Patient inputs health care number
-4. Patient creates valid password
-5. Patient confirms password
-6. Patient confirms they are not a robot
-7. Patient agrees to terms of consent form
-8. Patient is logged-in to Mr ED system 
+**Assumptions**:
 
-**Issues**: 
-- Site security
-- Encryption
-  
+**Steps**:
+
+**Variations**: 
+
+**Non-functional**:
+
+**Issues**:
+
 ---
 
-### UC-2: Take Virtual Triage 
+### UC-3: Take Virtual Triage 
 
 **Description**: The patient takes a virtual triage through Mister Ed
 
@@ -92,34 +79,83 @@
 
 ---
 
-### UC-3: View Current ED Load
+### UC-4: Sign into Mister Ed
 
-**Description**: The patient is able to view ED queue loads
+**Description**: Have the patient log into the Mr ED system so other actions can be performed within the system.
 
 **Actors**:
 - Patient (Primary actor)
 
-**Assumptions**:
-- The patient has successfully signed-in to their MISTER ED account.
+**Assumptions**: 
+
+- Patient has access to the internet
+- Patient has a valid PHN
+- Patient has a valid email
 
 **Steps**:
-1. The patient selects the option that brings them to the screen that shows them local ED queues.
+
+1. Patient Inputs legal name
+2. Patient inputs health care number
+3. Patient Inputs valid password
+4. Patient is logged in to Mr ED system 
+
+**Non-functional**:
+
+- **Intuitive**: must be simple for non tech savvy users to easily log in 
+- **Forgot password**: must have function to send a replacement password to email. 
+
+**Issues**: 
+
+- Site security
+- Encryption
+  
+---
+
+### UC-5: Register to Mister Ed
+
+**Use Case Extension**: UC-5 extends UC-4
+
+**Change**: Instead of logging into Mister Ed immediately, the patient must first make an account if they do not already have one
+
+**Steps**:  
+
+1. Patient inputs legal name
+2. Patient inputs valid email
+3. Patient inputs health care number
+4. Patient creates valid password
+5. Patient confirms password
+6. Patient confirms they are not a robot
+7. Patient agrees to terms of consent form
+8. Patient is logged-in to Mr ED system 
+
+**Issues**: 
+- Site security
+- Encryption
+  
+---
+
+### UC-6: Notify Patient of ED visit 
+
+**Description**: 
+
+**Actors**:
+
+- Patient (Primary actor)
+
+**Assumptions**:
+
+**Steps**:
 
 **Variations**: 
 
 **Non-functional**:
 
-- **Reliability**: The display for the queue loads must be accurate.
-
-**Issues**: 
-
-- The number of other patients in the queue must not indicate any personal information about the other patients.
-- The queue load is not an accurate representation of ED wait times
-
+**Issues**:
 
 ---
 
-### UC-4: Real Triage
+
+### UC-7: In Person Triage
 
 **Description**: The patient is told to receive triage in-person at a specificed location
 
@@ -139,176 +175,6 @@
 
 **Issues**: 
 
-- How far in advance of their appointment is the user given appointment time and location
-
-## Nurse 
-### UC-N1
-
-**Description**: Assign treatment option to patient
-
-**Actors**:
-
-- Nurse
-- Patient
-
-**Assumptions**:
-
-- Patient has completed an in person triage
-
-**Steps**:
-
-1. Nurse assess patient details
-2. Nurse directs patient to treatment options
-
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
+- How far in advance of their appointment is the user given appointment time and location //Albert: Aren't there no appointments for triage? Fix?
 
 ---
-
-### UC-5
-
-**Description**: View ED current loads
-
-**Actors**:
-
-- Nurse
-
-**Assumptions**: 
-
-- Nurse has an authorized account in the Mr ED system
-
-**Steps**: 
-
-1. The nurse selects the option on the Mr ED platform that allows them to see current loads in the ED
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
-
-## Mister ED Database
-### UC-D1
-
-**Description**: Manage appointments
-
-**Actors**:
-
-- Mr ED Database
-- Patient
-
-**Assumptions**:
-
-- Mr ED database can communicate to send and receive information from the provinces health database. Mr ED system has complete access to the database.
-
-**Steps**:
-
-1. From the Mr ED database first must view priorities of all the current patients 
-2. Then must ensure that from the database
-
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
-
----
-
-### UC-6
-
-**Description**: 
-
-**Actors**:
-
-**Assumptions**: Software system
-
-**Steps**: Intention of the use case.
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
-
-## Treatment Assignment
-### UC-T1
-
-**Description**: Patient is recommended to go to clinic/GP
-
-**Actors**:
-
-- Patient
-- Primary care clinic
-
-**Assumptions**: Software system
-
-**Steps**: 
-
-1. The patient is contacted with a recommendation to go to a primary care clinic 
-
----
-
-### UC-7
-
-**Description**: Patient is recommended to take an over the counter (OTC) medicatio
-
-**Actors**:
-
-- Patient
-
-**Assumptions**: Software system
-
-**Steps**:
-
-- The patient is contacted with a recommendation to take an OTC medication
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
-
----
-
-### UC-8
-
-**Description**: Patient is recommended to contact a medical hotline
-
-**Actors**:
-
-- Patient
-
-**Assumptions**: Software system
-
-**Steps**:
-
-- The patient is contacted with a recommendation to phone a medical hotline
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
-
----
-
-### UC-9
-
-**Description**: 
-
-**Actors**:
-
-**Assumptions**: Software system
-
-**Steps**: Intention of the use case.
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
