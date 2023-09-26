@@ -11,9 +11,9 @@
 
 **Assumptions**: 
 
--Patient has access to the internet
--Patient has a valid PHN
--Patient has a valid email
+- Patient has access to the internet
+- Patient has a valid PHN
+- Patient has a valid email
 
 **Steps**:
 
