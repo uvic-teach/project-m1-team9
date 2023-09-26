@@ -37,24 +37,29 @@
 - Emergency Department
 
 **Assumptions**: 
-Patient is in the position to be recommended a health solution.
+- Patient knows what they want to find for health care.
+- If the patient wants to go to an ED, they know which one to go to.
 
 **Steps**:
-1. take the recommended solution from previous use case which could be ED, GP clinic, Medical Hotline.
-2. From the type of care needed locate the closes to the patient using the map
-3. recommend the closes of the required health solution 
+1. Open the MisterEd system.
+2. Filter by location and type of care desired.
+3. Find location, directions, and contact information of desired medical service. 
 
-**Variations**: 
+**Variations**:
+- Patient doesn't find what they're looking for.
 
 **Non-functional**:
--needs to scalable to large datasets of maps
+- needs to scalable to large datasets of maps.
+- Needs to be accurate and have up to date information on services and locations.
 
 **Issues**:
 - runtime
 
-### UC-2a: View Current ED Load 
+### UC-2a: View Current ED Load
 
-**Description**: 
+**Use Case Extension**: UC-1 extends UC-2
+
+**Description**: User can see ED loads of ED's on the map.
 
 **Actors**:
 
@@ -62,20 +67,25 @@ Patient is in the position to be recommended a health solution.
 - Emergency Department
 
 **Assumptions**: 
-Patient is in the position to be recommended a health solution.
+- Patient is planning on going to an ED but is concerned about capacity or wait time.
 
 **Steps**:
-1. take the recommended solution from previous use case which could be ED, GP clinic, Medical Hotline.
-2. From the type of care needed locate the closes to the patient using the map
-3. recommend the closes of the required health solution 
+1. Open the MisterEd system.
+2. Filter by location and ED's.
+3. Find ED's near the patient.
+4. Check current ED load on the map of the ED's nearby.
 
 **Variations**: 
+- Patient decides on other medical treatment if ED isn't strongly recommended.
+- Patient changes which ED they're going to visit based on current ED load.
+- Patient goes to ED after seeing that they're not at a high capacity despite not being recommended to.
 
 **Non-functional**:
 -needs to scalable to large datasets of maps
 
 **Issues**:
 - runtime
+- Needs to be accurate and have up to date information on services, locations, and current ED load.
 
 ### UC-2b: Take Virtual Triage
 
@@ -87,20 +97,33 @@ Patient is in the position to be recommended a health solution.
 - Emergency Department
 
 **Assumptions**: 
-Patient is in the position to be recommended a health solution.
+- Patient is registered and signed into the MisterEd system.
+- Patient is unsure of what sort of medical treatment they require.
+- Patient is able to be safely virtually triaged and recommended an accurate course of action.
 
 **Steps**:
-1. take the recommended solution from previous use case which could be ED, GP clinic, Medical Hotline.
-2. From the type of care needed locate the closes to the patient using the map
-3. recommend the closes of the required health solution 
+1. The patient answers the questions on the triage questionnaire using drop-down menus for answers (multiple choice).
+2. The inputs are used to automatically determine the next steps for the patient.
+3. The results are given to the patient.
+4. From the type of care recommended, the maps locates the closest resources to the patient using the map.
+5. The patient can now find directions, availiablity, and contact information for various services in their area from the map.
 
 **Variations**: 
+- Patient is told to go to one of:
+  - Pharmacty (OTC Medication)
+  - GP/clinic
+  - Medical hotline
+  - In person triage
+  - Directly placed in the ED queue
 
 **Non-functional**:
--needs to scalable to large datasets of maps
+- Needs to be consistent and reliable
+- Needs to give accurate triage assessments and when unable to, get the patient triaged in person.
 
 **Issues**:
-- runtime
+- Accuracy
+- Patients not being able to accurately answer technical questions
+- Databases not containing enough information on previous health conditions for an accurate triage
 
 ---
 
