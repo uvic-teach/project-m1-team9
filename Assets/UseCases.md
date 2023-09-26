@@ -9,7 +9,11 @@
 **Actors**:
 - Patient
 
-**Assumptions**: Patient has a computer with internet connection and a valid email address
+**Assumptions**: 
+
+*Patient has access to the internet
+*Patient has a valid PHN
+*Patient has a valid email
 
 **Steps**:
 
