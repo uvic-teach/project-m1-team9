@@ -110,8 +110,6 @@
 
 - Site security
 - Encryption
-  
----
 
 ### UC-4.5: Register to Mister Ed
 
