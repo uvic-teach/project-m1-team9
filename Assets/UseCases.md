@@ -113,9 +113,33 @@
   
 ---
 
-### UC-5: Register to Mister Ed
+### UC-4.5: Register to Mister Ed
 
 **Use Case Extension**: UC-5 extends UC-4
+
+**Change**: Instead of logging into Mister Ed immediately, the patient must first make an account if they do not already have one
+
+**Steps**:  
+
+1. Patient inputs legal name
+2. Patient inputs valid email
+3. Patient inputs health care number
+4. Patient creates valid password
+5. Patient confirms password
+6. Patient confirms they are not a robot
+7. Patient agrees to terms of consent form
+8. Patient is logged-in to Mr ED system 
+
+**Issues**: 
+- Site security
+- Encryption
+  
+---
+
+
+### UC-5: Register to Mister Ed
+
+**Description**: Have the patient register to the MisterED system so that the user can sign into the MisterED system.
 
 **Change**: Instead of logging into Mister Ed immediately, the patient must first make an account if they do not already have one
 
