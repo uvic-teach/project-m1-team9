@@ -141,41 +141,12 @@
 
 - How far in advance of their appointment is the user given appointment time and location
 
-## Nurse 
-### UC-N1
-
-**Description**: Assign treatment option to patient
-
-**Actors**:
-
-- Nurse
-- Patient
-
-**Assumptions**:
-
-- Patient has completed an in person triage
-
-**Steps**:
-
-1. Nurse assess patient details
-2. Nurse directs patient to treatment options
-
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
-
----
 
 ### UC-5
 
 **Description**: Register to Mr ED
 
-**Actors**:
-
-- Patient, BC health database
+**Actors**: Patient, BC health database
 
 **Assumptions**: 
 
@@ -196,35 +167,8 @@ patient puts in wrong health number - returns an error
 **Non-functional**:
 
 **Issues**: 
-cyber security
+cyber security, leaking patient health info
 
-## Mister ED Database
-### UC-D1
-
-**Description**: Manage appointments
-
-**Actors**:
-
-- Mr ED Database
-- Patient
-
-**Assumptions**:
-
-- Mr ED database can communicate to send and receive information from the provinces health database. Mr ED system has complete access to the database.
-
-**Steps**:
-
-1. From the Mr ED database first must view priorities of all the current patients 
-2. Then must ensure that from the database
-
-
-**Variations**: 
-
-**Non-functional**:
-
-**Issues**: 
-
----
 
 ### UC-6 extends UC-3 
 
