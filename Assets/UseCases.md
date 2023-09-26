@@ -264,6 +264,40 @@ Patient does not confirm they are coming to ED through MR ED system,
 - Site security
 - Possiblity of making public citizens medical information
 - Encryption
+
+### UC-6a: Notify Patient of ED Visit
+
+**Use Case Extension**: UC-3 extends UC-6
+
+**Actors**:
+
+- Patient (Primary actor)
+
+**Assumptions**:
+
+- The patient is able to competently answer the questions on the triage questionnaire. 
+- The patient has successfully signed-in to their MISTER ED account.
+
+**Steps**:
+
+1. The patient answers the questions on the triage questionnaire using drop-down menus for answers (multiple choice).
+2. The inputs are used to automatically determine the next steps for the patient.
+3. The results are given to the patient.
+
+**Variations**: 
+
+- The patient cannot be safely triaged virtually so they are given a triage location to travel to and are triaged in person.
+
+**Non-functional**:
+
+- **Performance & Scalability**: This use-case should be able to be completed quickly and should not be slowed by technical issues.
+- **Usability**: The questionnaire must be simple enough for any user to be able to complete it.
+- **Reliability**: This use-case must be reliable as incorrectly triaging a person could have serious consequences on their health. 
+
+**Issues**:
+
+- The patient’s triage information must remain private
+
 ---
 
 ### UC-7: In Person Triage
