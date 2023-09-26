@@ -171,25 +171,32 @@
 
 ### UC-5
 
-**Description**: View ED current loads
+**Description**: Register to Mr ED
 
 **Actors**:
 
-- Nurse
+- Patient, BC health database
 
 **Assumptions**: 
 
-- Nurse has an authorized account in the Mr ED system
+- Patient does not have an authorized account in the Mr ED system
+- Mr ED system has access to BC health Database
 
 **Steps**: 
 
-1. The nurse selects the option on the Mr ED platform that allows them to see current loads in the ED
+1. Patient fills in Username
+2. Patient fills in health info
+   2.1 patient gives health number
+   2.2 number is checked against database
+3. Patient gives password
+4. patient confirms password
 
 **Variations**: 
-
+patient puts in wrong health number - returns an error
 **Non-functional**:
 
 **Issues**: 
+cyber security
 
 ## Mister ED Database
 ### UC-D1
@@ -219,21 +226,24 @@
 
 ---
 
-### UC-6
+### UC-6 extends UC-3 
 
-**Description**: 
+**description**: notify patient of ED vist
 
-**Actors**:
+**change**: want to alert patient that they should now arrive to the ER room so they can be helpped
 
-**Assumptions**: Software system
-
-**Steps**: Intention of the use case.
+**Steps**: 
+1. recieve the patient that needs to be notified to com into the ER
+2. send a notification to patient for patient to confirm they are coming
+3. wait for patient to confirm
+4. They confim that they are coming
 
 **Variations**: 
 
 **Non-functional**:
 
 **Issues**: 
+cyber security
 
 ## Treatment Assignment
 ### UC-T1
