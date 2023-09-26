@@ -180,3 +180,52 @@
 - How far in advance of their appointment is the user given appointment time and location //Albert: Aren't there no appointments for triage? Fix?
 
 ---
+
+// From Main to edit/add to above
+
+### UC-5
+
+**Description**: Register to Mr ED
+
+**Actors**: Patient, BC health database
+
+**Assumptions**: 
+
+- Patient does not have an authorized account in the Mr ED system
+- Mr ED system has access to BC health Database
+
+**Steps**: 
+
+1. Patient fills in Username
+2. Patient fills in health info
+   2.1 patient gives health number
+   2.2 number is checked against database
+3. Patient gives password
+4. patient confirms password
+
+**Variations**: 
+patient puts in wrong health number - returns an error
+**Non-functional**:
+
+**Issues**: 
+cyber security, leaking patient health info
+
+
+### UC-6 extends UC-3 
+
+**description**: notify patient of ED vist
+
+**change**: want to alert patient that they should now arrive to the ER room so they can be helpped
+
+**Steps**: 
+1. recieve the patient that needs to be notified to com into the ER
+2. send a notification to patient for patient to confirm they are coming
+3. wait for patient to confirm
+4. They confim that they are coming
+
+**Variations**: 
+
+**Non-functional**:
+
+**Issues**: 
+cyber security
