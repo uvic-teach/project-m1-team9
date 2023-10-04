@@ -1,0 +1,10 @@
+# Django temp files
+**/__pycache__/
+**/*.pyc
+
+# EDMap Django migrations folder
+EDMapService/EDMapWebapp/migrations/**
+
+# EDMap sqlite file
+EDMapService/db.sqlite3
+

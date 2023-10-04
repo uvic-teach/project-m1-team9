@@ -1,5 +1,9 @@
-from django.http import HttpResponse
+'''
+View classes building HTTP responses for URLS
+'''
+from django.views.generic import TemplateView
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the map index.")
+class MapView(TemplateView):
+    '''Main map page'''
+    template_name = "map.html"
