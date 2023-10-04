@@ -1,13 +1,19 @@
 import os
 from email.message import EmailMessage
 import smtplib
+import json
+
+with open('mockDB.json', 'r') as openfile:
+    json_object = json.load(openfile)
+
+specific_object = data[0]
 
 sender = 'mistered.health@gmail.com'
 password = 'xquy owpn pqqe ctis'
-receiver = 'larmac2019@gmail.com'
+receiver = specific_object[1]
 
 subject = 'Mister Ed: Queue Update'
-body = "You are next to receive treatment at the Victoria General Hospital Emergency Department. Please travel there now."
+body = specific_object[0]+"You are next to receive treatment at" + spcific_object[2] + ". Please travel there now."
 
 message = EmailMessage()
 message['From'] = sender
