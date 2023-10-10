@@ -2,7 +2,7 @@ from email.message import EmailMessage
 import json
 from email_notification import send_email
 
-file_path = '/Users/maclarsen/cs/email_trial/mockDB.json'
+file_path = '/project-m1-team9/ED-Notification/mockDB.json'
 
 with open(file_path, 'r') as openfile:
     data = json.load(openfile)
