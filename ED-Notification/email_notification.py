@@ -3,23 +3,21 @@ import smtplib
 import json
 import time
 
-#file_path = 'project-m1-team9/ED-Notification/mockDB.json'
-
-with open('mockDB.json', 'r') as openfile:
+with open('mockDB.json', 'r') as openfile:        #access json file and saves objects as list to data
     data = json.load(openfile)
 
 def send_email(objects):
-    sender = 'mistered.health@gmail.com'
-    password = 'xquy owpn pqqe ctis'
-    receiver = objects['email']
+    sender = 'mistered.health@gmail.com'  #address email sent from
+    password = 'xquy owpn pqqe ctis'      #password to send fro above address
+    receiver = objects['email']           #address of recipient (taken from json for mock)
 
-    subject = 'Mister Ed: Queue Update'
-    body = objects['name']+", you are next to receive treatment at " + objects['nearestED'] + ". Please travel there now."
+    subject = 'Mister Ed: Queue Update'        #email subject header
+    body = objects['name']+", you are next to receive treatment at " + objects['nearestED'] + ". Please travel there now."        #email body
 
-    time.sleep(objects['wait'])
+    time.sleep(objects['wait'])        #Pause to mimic receiving queue update from ED (time taken from json for mock)
 
     message = EmailMessage()
-    message['From'] = sender
+    message['From'] = sender   
     message['To'] = receiver
     message['Subject'] = subject
     message.set_content(body)
