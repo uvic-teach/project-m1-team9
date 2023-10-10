@@ -9,7 +9,7 @@ with open('mockDB.json', 'r') as openfile:        #access json file and saves ob
 def send_email(objects):
     sender = 'mistered.health@gmail.com'  #address email sent from
     password = 'xquy owpn pqqe ctis'      #password to send fro above address
-    receiver = objects['email']           #address of recipient (taken from json for mock)
+    receiver = objects['email']           #address of recipient (taken from json for mock or INSERT YOUR EMAIL HERE TO VIEW RESULTS FOR MARKING PURPOSES)
 
     subject = 'Mister Ed: Queue Update'        #email subject header
     body = objects['name']+", you are next to receive treatment at " + objects['nearestED'] + ". Please travel there now."        #email body
