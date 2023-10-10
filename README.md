@@ -1,4 +1,4 @@
-TODO: Establish readme to provide direction for contributing to our project
+TODO: Continually update as project evolve.
 
 # README
 
@@ -13,3 +13,9 @@ Select Existing Document and scroll down to uvic-teach/project-m1-team9, navigat
 ### New Document
 
 Select new document. Changes file type to png so that you can link directly to it in Markdown files and they render instantly.
+
+# Feature Contribution
+
+Create a new branch with a descriptive lowercase name in your preferred Git interface (GUI, CLI, etc.)
+Commit any diagrams in relation to your feature branch in /Assets/ per the [How to create diagrams](how-to-create-diagrams) section above.
+Create pull request when you wish to merge your feature into main - add comments if necessary and have it review by one other person on the team.
