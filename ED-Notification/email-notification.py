@@ -3,9 +3,9 @@ import smtplib
 import json
 import time
 
-file_path = 'project-m1-team9/ED-Notification/mockDB.json'
+#file_path = 'project-m1-team9/ED-Notification/mockDB.json'
 
-with open(file_path, 'r') as openfile:
+with open('mockDB.json', 'r') as openfile:
     data = json.load(openfile)
 
 def send_email(objects):
