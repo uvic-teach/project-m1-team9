@@ -1,6 +1,6 @@
 from email.message import EmailMessage
 import json
-from email_notification import send_email
+from email-notification import send_email
 
 #file_path = 'project-m1-team9/ED-Notification/mockDB.json'
 
