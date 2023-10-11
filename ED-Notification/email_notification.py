@@ -14,7 +14,7 @@ def send_email(objects):
     subject = 'Mister Ed: Queue Update'        #email subject header
     body = objects['name']+", you are next to receive treatment at " + objects['nearestED'] + ". Please travel there now."        #email body
 
-    time.sleep(objects['wait'])        #Pause to mimic receiving queue update from ED (time taken from json for mock)
+    #time.sleep(objects['wait'])        #Pause to mimic receiving queue update from ED (time taken from json for mock)
 
     message = EmailMessage()
     message['From'] = sender   
