@@ -134,6 +134,9 @@
 **Actors**:
 
 - Patient (Primary actor)
+- BC Health Database
+- Non-Emergency Options
+- Emergency Department
 
 **Assumptions**:
 
