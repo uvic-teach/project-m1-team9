@@ -7,6 +7,7 @@ with open('mockDB.json', 'r') as openfile:;        #open json file and save obje
 
 def main():
     for objects in data:
+        time.sleep(30)
         send_email(objects)
 
 if __name__ == "__main__":
