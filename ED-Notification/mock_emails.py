@@ -7,7 +7,7 @@ with open('mockDB.json', 'r') as openfile:;        #open json file and save obje
 
 def main():
     for objects in data:
-        time.sleep(30)
+        time.sleep(15)        #mimic time between receiving updates from physician service
         send_email(objects)
 
 if __name__ == "__main__":
