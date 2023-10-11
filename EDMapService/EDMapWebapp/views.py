@@ -1,6 +1,7 @@
 '''
 View classes building HTTP responses for URLS
 '''
+import csv
 from typing import Any
 from django.views.generic import TemplateView
 
@@ -14,6 +15,12 @@ class MapView(TemplateView):
         context = super().get_context_data(**kwargs)
         coordinates = [[]]
 
+        with open('EDMapService/EDMapData/HospitalList.csv',
+                newline='',
+                encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                print(row['hospitalname'], row['latitude'], row['longitude'])
 
         context['coordinates'] = coordinates
         return context
