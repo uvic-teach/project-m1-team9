@@ -49,5 +49,8 @@ jobs:
         echo "Current Working Directory:"
         pwd
         ls
-        cd EDMapService/EDMapService
+        cd ..
+        echo "Current Working Directory:"
+        pwd
+        ls
         gcloud app deploy
