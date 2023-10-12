@@ -33,6 +33,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    needs: build
+
     steps:
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
@@ -44,5 +46,7 @@ jobs:
 
     - name: 'Use gcloud CLI'
       run: |
-        cd EDMapService
+        echo "Current Working Directory:"
+        pwd
+        cd EDMapService/EDMapService
         gcloud app deploy
