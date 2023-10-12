@@ -20,6 +20,12 @@ Create a new branch with a descriptive lowercase name in your preferred Git inte
 Commit any diagrams in relation to your feature branch in /Assets/ per the [how-to-create-diagrams](https://github.com/uvic-teach/project-m1-team9/tree/main#how-to-create-diagrams) section above.
 Create pull request when you wish to merge your feature into main - add comments if necessary and have it review by one other person on the team.
 
+## EDMapService
+
+![edmapservice-ci](https://github.com/uvic-teach/project-m1-team9/actions/workflows/edmapservice.yml/badge.svg)
+
+A microservice designed to display a map of nearby Emergency Departments based on the user's location.
+
 ## How to contribute to the EDUserManagement Service
 
 1. Clone the repository and navigate to the project directory - you should see ```manage.py```.
