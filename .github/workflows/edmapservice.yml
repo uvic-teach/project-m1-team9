@@ -36,6 +36,8 @@ jobs:
     needs: build
 
     steps:
+    - uses: actions/checkout@v3
+
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
       with:
@@ -46,11 +48,5 @@ jobs:
 
     - name: 'Use gcloud CLI'
       run: |
-        echo "Current Working Directory:"
-        pwd
-        ls
-        cd ..
-        echo "Current Working Directory:"
-        pwd
-        ls
+        cd EDMapService
         gcloud app deploy
