@@ -12,10 +12,9 @@ class MapView(TemplateView):
 
     def get_context_data(self, **kwargs):
         '''Grabs data and sends to map.html'''
+
         context = super().get_context_data(**kwargs)
         coordinates = []
-
-
 
         # Open csv
         with open('edcoordinates.csv',
@@ -25,7 +24,8 @@ class MapView(TemplateView):
             for row in reader:
                 coordinates.append([row['hospitalname'], row['latitude'], row['longitude']])
             
-        print(coordinates)
+        if (coordinates):
+            print(f"{len(coordinates)} coordinates loaded and ready for the map library!\n")
 
         context['coordinates'] = coordinates
         return context
