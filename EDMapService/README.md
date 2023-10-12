@@ -10,6 +10,6 @@
 
     $ python3 manage.py runserver [Host IP]:[Port]
 
- But to just run the development server on codespaces:
+ But to just run the development server on your local machine (default port is 8000):
 
     $ python3 manage.py runserver
