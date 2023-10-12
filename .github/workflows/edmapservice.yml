@@ -48,5 +48,7 @@ jobs:
 
     - name: 'Use gcloud CLI'
       run: |
+        pwd
+        ls
         cd EDMapService
         gcloud app deploy
