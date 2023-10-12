@@ -28,5 +28,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        cd EDMapService/EDMapWebapp
+        cd EDMapService
         python3 manage.py test
