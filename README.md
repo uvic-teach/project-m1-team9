@@ -61,8 +61,9 @@ Create pull request when you wish to merge your feature into main - add comments
 5. Run the server
     ```bash
     python3 manage.py runserver
-
+    ```
     Open your web browser and visit http://localhost:8000 to see the project running.
+
 6. Make a curl request to check an endpoint
     ```bash
     curl http://localhost:8000/eduser/user/1/
