@@ -1,4 +1,4 @@
-TODO: Continually update as project evolve.
+TODO: Continually update as project evolves.
 
 # README
 
