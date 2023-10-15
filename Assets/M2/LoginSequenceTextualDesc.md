@@ -1,4 +1,4 @@
-## Sequence Diagram: Login Sequence
+## SD-4: Sign-in to Mr. ED
 
 ### Description:
 The Login Sequence Diagram demonstrates the exchange of messages between the User,
