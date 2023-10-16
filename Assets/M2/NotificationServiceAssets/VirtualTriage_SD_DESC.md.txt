@@ -1,0 +1,41 @@
+@startuml
+!pragma teoz true
+actor       Patient     as P
+box "Mister ED System" #LightPink
+entity      "MisterEd\nVirtual Triage" as VT
+queue       "Notification\nSystem"      as NS
+end box
+box "External Services" #LightBlue
+database    "BC Health\nDatabase"      as HDB
+    box "ED" #Orange
+    entity      "Emergency\nDepartment" as ED
+    end box
+entity      "Non-Emergency\nHealth Options" as NE
+end box
+
+P   -> VT   : Start Virtual Triage
+VT -->>P    : Survey questions sent
+P   ->>VT   : Survery questions answered
+VT  -> HDB  : Request medical history
+activate HDB
+HDB -->> VT  : Medical history returned
+deactivate HDB
+VT -> VT : Process information
+alt#White #LightBlue ED Required
+    alt#White #LightGreen ED Required: Can be virtually triaged
+    VT -->> P  : ED recommended
+    destroy VT
+    VT -> ED : ED notified of patient
+    else #Salmon ED Required: Cannot be virtually triaged
+    VT -->> P: In person triage recommended
+    destroy VT
+    P -> ED : Patient visits ED in person
+    ED -->>P: Patient is triaged in person    
+    end
+    ED ->> NS : Patient added to queue
+else #Cyan Can be virtually triaged: Non-Emergency Result
+    VT -->> P  : Non-emergency recommended
+    destroy VT
+end
+P ->> NS : Patient requests notification
+@enduml
