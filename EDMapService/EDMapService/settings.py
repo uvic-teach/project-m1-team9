@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-lzdigu1+uu%!%p!a%nafbqwaiu$i9zqz-)wk_sc#t2ioo9pyom
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # <- FOR DEMO PURPOSES ONLY. NOT SECURE.
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "EDMapWebapp",
 ]
 
 MIDDLEWARE = [
