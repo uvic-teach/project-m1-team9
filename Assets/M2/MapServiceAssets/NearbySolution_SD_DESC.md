@@ -1,4 +1,4 @@
-## SD-5: Nearby ED Location
+## SD-5: Nearby Solution
 
 ### Description:
 The Nearby ED location sequence Diagram shows the sequence that occurs when a patient wants to use the feature to quickly find a hospital or other form of care nearest them. 
