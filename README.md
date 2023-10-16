@@ -24,7 +24,7 @@ Create pull request when you wish to merge your feature into main - add comments
 
 ![edmapservice-ci](https://github.com/uvic-teach/project-m1-team9/actions/workflows/edmapservice.yml/badge.svg)
 
-A microservice designed to display a map of nearby Emergency Departments based on the user's location.
+A microservice designed to display a map of nearby Emergency Departments based on the user's location. Automatically integrated via workflows and deployed to Google Cloud. Visit the live development version [here](https://extreme-lodge-401820.wl.r.appspot.com/edmap/)!
 
 ## How to contribute to the EDUserManagement Service
 

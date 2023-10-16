@@ -8,3 +8,4 @@ EDMapService/EDMapWebapp/migrations/**
 # EDMap sqlite file
 EDMapService/db.sqlite3
 
+.vscode/
