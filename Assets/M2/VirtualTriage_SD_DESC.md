@@ -13,6 +13,15 @@ This is a sequence diagram for virtual triage covering the main usecases.
 - Non-Emergency Health Options : Any external health resource to treat patients (Clinic, OTC medication)
 
 ### Messages:
+Patient                        as P
+MisterEd\nVirtual Triage       as VT
+Map Service                    as MS
+Notification\nSystem           as NS
+BC Health\nDatabase            as HDB
+Emergency\nDepartment          as ED
+Non-Emergency\nHealth Options  as NE
+
+
 P   ->  VT  : Patients starts virtual triage through MisterED
 
 VT -->> P   : Virtual triage sends the survey questions to the patient
