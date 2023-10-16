@@ -57,8 +57,7 @@ else Can be virtually triaged: Non-Emergency Result Case 2
     
 NS ->>  P      : Patient told they are on the queue and will be notified
 
-// I was thinking of adding that the patient would be asked if they wanted a notification or ot wait but I figured if 
-// we're assuming they're using the MisterED system they would want to wait at home instead of at the ED.
+I was thinking of adding that the patient would be asked if they wanted a notification or ot wait but I figured if we're assuming they're using the MisterED system they would want to wait at home instead of at the ED.
 
 loop forever
 
