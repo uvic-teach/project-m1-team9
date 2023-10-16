@@ -5,19 +5,19 @@ This is a sequence diagram for virtual triage covering the main usecases.
 
 ### Participants:
 - Patient
- - P : Person seeking treatment.
+  - P : Person seeking treatment.
 - MisterEd Virtual Triage
- - VT : Virtual triage service we provide
+  - VT : Virtual triage service we provide
 - Notification System
- -  NS : Sends notifications and keeps tract of the ED queue
+  - NS : Sends notifications and keeps tract of the ED queue
 - Map Service
- - MS : Map microservice that shows the locations of health services
+  - MS : Map microservice that shows the locations of health services
 - BC Health Database
- - HDB : Stores patient data and medical history
+  - HDB : Stores patient data and medical history
 - Emergency Department
- - ED : Emergency department at the hospital, has a queue
+  - ED : Emergency department at the hospital, has a queue
 - Non-Emergency Health Options
- - NE : Any external health resource to treat patients (Clinic, OTC medication)
+  - NE : Any external health resource to treat patients (Clinic, OTC medication)
 
 ### Messages:
 P   ->  VT  : Patients starts virtual triage through MisterED
