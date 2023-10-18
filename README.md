@@ -2,6 +2,16 @@ TODO: Continually update as project evolves.
 
 # README
 
+## Feature Contribution
+
+The current workflow is to maintain a "dev" branch and a "main" (production) branch. Main should not be touched until milestone completion, where all work from the dev branch will be merged in.
+
+To develop a feature, create a new branch with a descriptive lowercase name in your preferred Git interface (GUI, CLI, etc.). Commit any code changes into the feature branch. For associated diagrams, commit them the dev branch, NOT the feature branch.
+
+Create pull request when the feature is complete, to merge your feature into dev - add comments if necessary and have it review by one other person on the team. Afterwards, close the feature branch.
+
+At the end of the milestone / sprint, dev will be merged into main. We have dev as the "default" branch to avoid accidentally branching from or adding to main, so to merge dev into main, main will have to be swapped back into being the default branch.
+
 ## How to create diagrams
 
 Navigate to [https://app.diagrams.net/?mode=github](https://app.diagrams.net/?mode=github) and authorize with your GitHub.
@@ -13,12 +23,6 @@ Select Existing Document and scroll down to uvic-teach/project-m1-team9, navigat
 ### New Document
 
 Select new document. Changes file type to png so that you can link directly to it in Markdown files and they render instantly.
-
-# Feature Contribution
-
-Create a new branch with a descriptive lowercase name in your preferred Git interface (GUI, CLI, etc.)
-Commit any diagrams in relation to your feature branch in /Assets/ per the [how-to-create-diagrams](https://github.com/uvic-teach/project-m1-team9/tree/main#how-to-create-diagrams) section above.
-Create pull request when you wish to merge your feature into main - add comments if necessary and have it review by one other person on the team.
 
 ## EDMapService
 
