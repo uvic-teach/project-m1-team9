@@ -10,12 +10,12 @@ import json
 
 file_path = "mockDB.json"
 
-with open(file_path, 'r') as openfile
+with open(file_path, 'r') as openfile:
   data = json.load(openfile)
 
 
 def main():
-  
+  print(openfile)
 
 
 
