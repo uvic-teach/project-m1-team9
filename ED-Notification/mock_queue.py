@@ -6,12 +6,63 @@
 #   TO BE TREATED LIST (TBTL) -> implements kick (M4: Kick cond. 1: Timeout 2: Confirm treated)
 #   TBTL.kick(patient) -> remove patient from TBTL, then dequeue item on queue and put into TBTL
 #   for now M3; have kick place patient at end of queue (infinite loop)
+
 import json
 
 file_path = "mockDB.json"
 
 with open(file_path, 'r') as openfile:
   data = json.load(openfile)
+
+
+class ED_List:
+  def __init__(self):
+    self.list = []
+
+  def is_empty(self):
+    return len(self.list) == 0
+  
+  def add(self, item):
+    self.add.append(item)
+  
+  def remove(self, key):
+    for key in self.list:
+      self.list.remove(key)
+
+  def size(self):
+    return len(self.list)
+  
+  def print(self):
+    print(self.list)
+   
+
+class Queue(ED_List):
+  def __init__(self):
+    super.__init__()
+
+  def is_empty(self):
+    return len(self.patient_queue) == 0
+  
+  def enqueue(self, patient):
+    self.patient_queue.append(patient)
+  
+  def dequeue(self):
+    if not self.is_empty():
+      return self.patient_queue.pop(0)
+    else:
+      return None
+    
+  def size(self):
+    return len(self.patient_queue)
+  
+  def print(self):
+    print(self.patient_queue)
+
+class TBTL:
+  def __init__(self):
+    super.__init__()
+    self.capacity = 3
+  
 
 
 def main():
