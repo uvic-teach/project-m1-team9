@@ -39,24 +39,15 @@ class ED_List:
 class Queue(ED_List):
   def __init__(self):
     super.__init__()
-
-  def is_empty(self):
-    return len(self.patient_queue) == 0
   
   def enqueue(self, patient):
-    self.patient_queue.append(patient)
+    self.list.append(patient)
   
   def dequeue(self):
     if not self.is_empty():
-      return self.patient_queue.pop(0)
+      return self.list.pop(0)
     else:
       return None
-    
-  def size(self):
-    return len(self.patient_queue)
-  
-  def print(self):
-    print(self.patient_queue)
 
 class TBTL:
   def __init__(self):
