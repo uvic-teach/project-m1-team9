@@ -3,6 +3,15 @@ import json
 from email_notification import send_email
 import time
 
+##########################################################################
+
+#run this python file to test/mock email_notification.py
+
+#ensure that <INSERT YOUR EMAIL> in this file and in mockDB.json 
+#are changed to the email address that you want this message sent to
+
+##########################################################################
+
 file_path = "mockDB.json"
 
 with open('mockDB.json', 'r') as openfile:;        #open json file and save objects to data as list
