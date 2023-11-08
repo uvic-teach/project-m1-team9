@@ -76,6 +76,10 @@ class TBTL(ED_list):
     if patient != None:
       self.add(patient)
 
+mockNoiseDB = [
+{"name": "Johnathan", "email": "<INSERT YOUR EMAIL>", "nearestED": "Victoria General Hopsital", "EDqueue": 5}, 
+{"name": "Emiree", "email": "<INSERT YOUR EMAIL>", "nearestED": "Royal Jubilee Hospital", "EDqueue": 2}, 
+{"name": "Samuel", "email": "<INSERT YOUR EMAIL>", "nearestED": "Oak Bay Urgent Care Clinic", "EDqueue": 0}]
 
 def main():
   print(openfile)
