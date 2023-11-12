@@ -24,12 +24,14 @@ class ED_list:
     return len(self.list) == 0
   
   def add(self, item):
-    self.add.append(item)
+    for thing in item:
+      self.list.append(thing)
   
   def remove(self, key):
-    for key in self.list:
-      item = self.list.remove(key)
-      return item
+    for item in self.list:
+      if item['name'] == key:
+        return self.list.remove(item)
+      
 
   def size(self):
     return len(self.list)
@@ -47,7 +49,8 @@ class Queue(ED_list):
   # future implementation would implement a smarter insertion of elements into the queue
   # future implementation goal is to use smarter insertion to implement a priority queue
   def enqueue(self, patient):
-    self.list.append(patient)
+    for thing in patient:
+      self.list.append(thing)
   
   def dequeue(self):
     if not self.is_empty():
@@ -78,6 +81,9 @@ class TBTL(ED_list):
     patient = self.queue.dequeue()
     if patient != None:
       self.add(patient)
+  
+  def print_queue(self):
+    self.queue.print_list()
 
 mockNoiseDB = [
 {"name": "Johnathan", "email": "<INSERT YOUR EMAIL>", "nearestED": "Victoria General Hopsital", "EDqueue": 5}, 
@@ -85,9 +91,19 @@ mockNoiseDB = [
 {"name": "Samuel", "email": "<INSERT YOUR EMAIL>", "nearestED": "Oak Bay Urgent Care Clinic", "EDqueue": 0}]
 
 def main():
-  tbtl = TBTL(3)
-  tbtl.list = mockNoiseDB
-  tbtl.print_list()
+  # Sanity testing via prints and object creation
+  list = ED_list()
+  list.add(mockNoiseDB)
+  #list.print_list()
+  list.remove("Johnathan")
+  #print(list.is_empty())
+  #list.print_list()
+  print(list.size())
+  list.add([mockNoiseDB[0]])
+  list.print_list()
+
+  
+
   
 
 
