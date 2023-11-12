@@ -64,7 +64,7 @@ class ED_list:
     for item in self.list:
       print(item)
 
-  #verified
+  
   def clear(self):
     self.list = []
    
@@ -88,7 +88,7 @@ class TBTL(ED_list):
     self.capacity = capacity
     self.queue = Queue()
   
-  #verified
+  
   def clear(self):
     self.list = []
     self.queue.list = []
@@ -138,7 +138,7 @@ def main():
 
 
 def tests():
-  # Sanity testing via prints and object creation
+  print("Sanity testing via prints")
   # list = ED_list()
 
   """
