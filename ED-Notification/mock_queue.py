@@ -17,41 +17,63 @@ with open(file_path, 'r') as openfile:
 
 
 class ED_list:
+  #verified
   def __init__(self):
     self.list = []
 
+  #verified
   def is_empty(self):
     return len(self.list) == 0
   
+  #verified to work when given a list, and single item
   def add(self, item):
-    for thing in item:
-      self.list.append(thing)
+    if isinstance(item, list):
+      for thing in item:
+        self.list.append(thing)
+    else:
+      self.list.append(item)
   
-  def remove(self, key):
-    for item in self.list:
-      if item['name'] == key:
-        return self.list.remove(item)
+  #verified to work when given key that matches
+  #verified to work when given key that doesn't match
+  #verified to not remove dict items when given key that doesn't match
+  #verified to work with single items
+  #verified to return none without a match
+  def remove(self, key, key_name = 'name'):
+    try:
+      self.list.remove(key)
+      return key
+    except ValueError:
+      for item in self.list:
+        if isinstance(item, dict):
+          try:
+            if item[key_name] == key:
+              value = item
+              self.list.remove(item)
+              return value
+          except KeyError:
+            continue
+          
+    return None
       
-
+  #verified
   def size(self):
     return len(self.list)
   
+  #verified
   def print_list(self):
     for item in self.list:
       print(item)
+
+  #verified
+  def clear(self):
+    self.list = []
    
 
 class Queue(ED_list):
   def __init__(self):
     super().__init__()
-    
-  # enqueue function is not meant to be a duplicate of the add() function of ED_lists
-  # future implementation would implement a smarter insertion of elements into the queue
-  # future implementation goal is to use smarter insertion to implement a priority queue
-  def enqueue(self, patient):
-    for thing in patient:
-      self.list.append(thing)
   
+  #verified
   def dequeue(self):
     if not self.is_empty():
       return self.list.pop(0)
@@ -60,23 +82,38 @@ class Queue(ED_list):
 
 class TBTL(ED_list):
 
+  #verified
   def __init__(self, capacity = 3):
     super().__init__()
     self.capacity = capacity
     self.queue = Queue()
   
+  #verified
+  def clear(self):
+    self.list = []
+    self.queue.list = []
   
+  #verified
   def add(self, item):
     if len(self.list) >= self.capacity:
       print("TBTL is full")
+    elif isinstance(item, list):
+      if len(item) > (self.capacity - len(self.list)):
+        print(f"TBTL can't fit: ", item)
+      else:
+        super().add(item)
     else:
-      self.list.append(item)
+      super().add(item)
   
+  #verified
   def kick(self, key):
     # if infinite loop of patients isn't required, remove the patient variable
     patient = self.remove(key)
+    if patient == None:
+      print(f"No match in TBTL for: ", key)
+      return
     # temporary infinite loop of rotating patients for development/demonstration purposes
-    self.queue.enqueue(patient)
+    self.queue.add(patient)
     
     patient = self.queue.dequeue()
     if patient != None:
@@ -85,29 +122,185 @@ class TBTL(ED_list):
   def print_queue(self):
     self.queue.print_list()
 
+# List of dictionaries
+# Dictionaries are defined by my_dict = {"trait0": "trait0 content", "trait1": "trait1 content"}
 mockNoiseDB = [
 {"name": "Johnathan", "email": "<INSERT YOUR EMAIL>", "nearestED": "Victoria General Hopsital", "EDqueue": 5}, 
 {"name": "Emiree", "email": "<INSERT YOUR EMAIL>", "nearestED": "Royal Jubilee Hospital", "EDqueue": 2}, 
 {"name": "Samuel", "email": "<INSERT YOUR EMAIL>", "nearestED": "Oak Bay Urgent Care Clinic", "EDqueue": 0}]
 
 def main():
-  # Sanity testing via prints and object creation
-  list = ED_list()
-  list.add(mockNoiseDB)
-  #list.print_list()
-  list.remove("Johnathan")
-  #print(list.is_empty())
-  #list.print_list()
-  print(list.size())
-  list.add([mockNoiseDB[0]])
-  list.print_list()
-
   
-
   
-
-
-
-
-if __name__ == "__main__":
+  
+  if __name__ == "__main__":
     main()
+
+
+def tests():
+  # Sanity testing via prints and object creation
+  # list = ED_list()
+
+  """
+  print(list.is_empty())
+  """
+  # list.is_empty() correctly identifies an empty list
+  """
+  list.print_list()
+  """
+  # correctly prints empty list
+
+  # list.add(mockNoiseDB)
+  # list.add correctly adds lists to itself element by element when given a list
+  # lists are defined by [thing0, thing1, thing2]
+
+  """
+  list.printlist()
+  """
+  # list.print_list correctly prints current list
+  
+  """
+  list.add(mockNoiseDB[2])
+  list.print_list()
+  """
+  # list.add() correctly adds single items to itself
+  
+
+  """
+  print(list.is_empty())
+  """
+  # list.is_empty() correctly identifies not empty list
+
+  
+  """
+  list.remove("Johnathan")
+  list.remove("Samuel")
+  """
+  # list.remove correctly removes element in dict if it finds a match
+
+  """
+  list.print_list()
+  list.add(2)
+  list.print_list()
+  list.remove(2, "")
+  list.print_list()
+  """
+  # list.add and remove work with single items
+
+  """
+  something = list.remove("This isn't in the list")
+  print(something)
+  """
+  # list.remove returns None with no match
+
+  """
+  list.remove("Samuel", "name")
+  list.print_list()
+  """
+  # list.remove works when given valid key_name
+
+  """
+  list.remove("Samuel", "")
+  list.print_list()
+  """
+  # list.remove works when not given a valid key_name
+
+  """
+  list.print_list()
+  print(f"size: ", list.size())
+  list.add(2)
+  print(f"size: ", list.size())
+  """
+  # list.size() correctly returns size of list
+
+  """
+  thing = list.remove("Johnathan")
+  print(f"This is the removed item: ", thing)
+    """
+    # list.remove() returns the removed item
+
+    # list0 = Queue()
+
+  """ 
+  print(list0.dequeue())
+  """
+  # Queue.dequeue() returns none when empty
+
+  """
+  list0.print_list()
+  list0.add(1)
+  list0.add(2)
+  list0.add(3)
+  list0.print_list()
+  print(f"Dequeued: ", list0.dequeue())
+  """
+  # Queue.dequeue() returns first item added to list
+
+  # c = TBTL()
+
+  """
+  print(c.capacity)
+  """
+  # TBTL correctly has default capacity of 3
+
+  """
+  d = TBTL(9)
+  print(d.capacity)
+  """
+  # TBTL correctly can redefine capacity
+
+  """
+  c.queue.add(mockNoiseDB)
+  c.queue.print_list()
+  c.queue.dequeue()
+  c.queue.print_list()
+  """
+  # TBTL has a queue and can add/remove stuff to it
+
+  """
+  d = TBTL(1)
+  d.add(mockNoiseDB)
+  """
+  # TBTL.add correctly doesn't fit when list is too long
+
+  """
+  d = TBTL(3)
+  d.add(1)
+  d.add(2)
+  d.add(3)
+  d.print_list()
+  d.add(4)
+  d.print_list()
+  d.remove(1)
+  d.remove(2)
+  d.remove(3)
+  d.print_list()
+  print(d.is_empty())
+  d.add(mockNoiseDB)
+  d.print_list()
+  d.clear()
+  d.capacity = 2
+  print(d.capacity)
+  d.add([1,2,3,4])
+  """
+  # TBTL.add verification mess, just wanted to do it faster
+
+  """
+  d = TBTL()
+  d.add([1,2,3])
+  d.queue.add([4,5,6])
+  print(f"Prekick\nTBTL: ", d.list, "\nQueue: ", d.queue.list)
+  d.kick(1)
+  print(f"Postkick\nTBTL: ", d.list, "\nQueue: ", d.queue.list)
+  d.kick(7)
+  e = TBTL()
+  e.add(mockNoiseDB)
+  e.queue.add(2)
+  print(f"Prekick\nTBTL: ", e.list, "\nQueue: ", e.queue.list)
+  e.kick("Emiree")
+  print(f"Postkick\nTBTL: ", e.list, "\nQueue: ", e.queue.list)
+  e.kick(2)
+  print(f"Postkick\nTBTL: ", e.list, "\nQueue: ", e.queue.list)
+  """
+  # TBTL.kick() verifying, verified it refills queue, kicks by element
+  # doesn't kick anything if nothing matches key, properly rotates items
