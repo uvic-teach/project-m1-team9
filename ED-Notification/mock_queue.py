@@ -16,7 +16,7 @@ with open(file_path, 'r') as openfile:
   data = json.load(openfile)
 
 
-class ED_List:
+class ED_list:
   def __init__(self):
     self.list = []
 
@@ -34,13 +34,14 @@ class ED_List:
   def size(self):
     return len(self.list)
   
-  def print(self):
-    print(self.list)
+  def print_list(self):
+    for item in self.list:
+      print(item)
    
 
-class Queue(ED_List):
+class Queue(ED_list):
   def __init__(self):
-    super.__init__()
+    super().__init__()
     
   # enqueue function is not meant to be a duplicate of the add() function of ED_lists
   # future implementation would implement a smarter insertion of elements into the queue
@@ -55,14 +56,16 @@ class Queue(ED_List):
       return None
 
 class TBTL(ED_list):
-  def __init__(self, capacity):
-    super.__init__()
+
+  def __init__(self, capacity = 3):
+    super().__init__()
     self.capacity = capacity
     self.queue = Queue()
   
+  
   def add(self, item):
-    if len(self.list) >= capacity:
-      print("TBTL is full");
+    if len(self.list) >= self.capacity:
+      print("TBTL is full")
     else:
       self.list.append(item)
   
@@ -82,7 +85,11 @@ mockNoiseDB = [
 {"name": "Samuel", "email": "<INSERT YOUR EMAIL>", "nearestED": "Oak Bay Urgent Care Clinic", "EDqueue": 0}]
 
 def main():
-  print(openfile)
+  tbtl = TBTL(3)
+  tbtl.list = mockNoiseDB
+  tbtl.print_list()
+  
+
 
 
 
