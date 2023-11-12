@@ -9,6 +9,7 @@
 #   (COMPLETE) for now M3; have kick place patient at end of queue (infinite loop)
 
 import json
+import time
 
 file_path = "mockDB.json"
 
@@ -61,6 +62,7 @@ class ED_list:
   
   #verified
   def print_list(self):
+    print(f"This is ", self, "'s list")
     for item in self.list:
       print(item)
 
@@ -130,11 +132,31 @@ mockNoiseDB = [
 {"name": "Samuel", "email": "<INSERT YOUR EMAIL>", "nearestED": "Oak Bay Urgent Care Clinic", "EDqueue": 0}]
 
 def main():
-  
-  
-  
-  if __name__ == "__main__":
-    main()
+  interval = 30
+  print("Starting ED usage... ")
+  time.sleep(1)
+  print("TBTL initialization")
+  a = TBTL()
+  a.add(data)
+  a.queue.add(mockNoiseDB)
+
+  print("----------------------------------------")
+  a.print_list()
+  print("----------------------------------------")
+  a.print_queue()
+
+  while True:
+    print(f"----------------------------------------\nKicking :", a.list[0])
+    print("----------------------------------------\nPost-Kick:")
+    print("----------------------------------------")
+    a.kick(a.list[0])
+    a.print_list()
+    print("----------------------------------------")
+    a.print_queue()
+    print("----------------------------------------")
+    print(f"Sleeping for ", interval, " seconds")
+    time.sleep(interval)
+
 
 
 def tests():
@@ -304,3 +326,7 @@ def tests():
   """
   # TBTL.kick() verifying, verified it refills queue, kicks by element
   # doesn't kick anything if nothing matches key, properly rotates items
+
+
+if __name__ == "__main__":
+    main()
