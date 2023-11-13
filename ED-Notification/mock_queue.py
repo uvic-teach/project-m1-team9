@@ -151,10 +151,11 @@ def cycleEDqueue(a):
 
 # Thread function that recives poll requests and returns whether or not the polled target is in the TBTL
 def listenForPoll(s, a):
+  print("Started listening for the poll reqs")
   while True:
     # Wait for a data package to be sent to us
-    recieved_data = s.recv(1024)
-    recieved_data = json.loads(recieved_data.decode())
+    recieved_data = s.recv(1024).decode()
+    #recieved_data = json.loads(recieved_data.decode())
 
     print("+++")
     print("Responding to poll request...")
@@ -162,23 +163,23 @@ def listenForPoll(s, a):
 
     in_tbtl = "False" #M4 todo: check if bools can be json'd & socketed
     for person in a.list:
-      if person['name'] == recieved_data.get("name"):
+      if person['name'] == recieved_data: #.get("name"):
         in_tbtl = "True"
 
-    package = json.dumps({"should_send_notif": in_tbtl})
-    s.send(package.encode())
+    #package = json.dumps({"should_send_notif": in_tbtl})
+    s.send(in_tbtl.encode())
 
 def main():
   # Setup & config socket for ED communication as client
-  server = socket.socket()
+  sside = socket.socket()
   host = socket.gethostname()
   port = 9981
-  server.bind((host, port))
+  sside.bind((host, port))
 
   # Wait for MISTER ED to ask to connect to socket
   print("Awaiting socket connection request...")
-  server.listen(1)
-  s, addr = server.accept()
+  sside.listen(1)
+  s, addr = sside.accept()
   print("Request accepted")
   print("")
 
@@ -191,19 +192,19 @@ def main():
   a.queue.add(mockNoiseDB)
   print("")
 
-  print("----------------------------------------")
-  a.print_list()
-  print("----------------------------------------")
-  a.print_queue()
+  #print("----------------------------------------")
+  #a.print_list()
+  #print("----------------------------------------")
+  #a.print_queue()
 
   # Attempt a connection to the ED server
   try:
     # Create and start the thread that manages the queue
-    queuethread = threading.Thread(target=cycleEDqueue, args=(a,))
-    queuethread.start()
+    #queuethread = threading.Thread(target=cycleEDqueue, args=(a,))
+    #queuethread.start()
 
     # Create and start the thread that sends data across the socket
-    listenthread = threading.Thread(target=sendPollRequest, args=(s, a))
+    listenthread = threading.Thread(target=listenForPoll, args=(s, a))
     listenthread.start()
   except Exception:
     sys.exit(1)

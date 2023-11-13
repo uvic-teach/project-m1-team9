@@ -24,14 +24,14 @@ class EmailFactory:
 def pollTheED(s, name):
 
     # Package out the string and send it across the socket
-    package = json.dumps({"name": name})
-    s.send(package.encode())
+    #package = json.dumps({"name": name})
+    s.send(name.encode())
 
     # Wait for a response from the ED
-    recieved_data = s.recv(1024)
-    recieved_data = json.loads(recieved_data.decode())
+    recieved_data = s.recv(1024).decode()
+    #recieved_data = json.loads(recieved_data.decode())
 
-    return recieved_data.get("should_send_notif")
+    return recieved_data #recieved_data.get("should_send_notif")
 
 def main():
 
