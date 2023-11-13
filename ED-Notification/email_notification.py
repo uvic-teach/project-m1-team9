@@ -37,30 +37,38 @@ def main():
 
     # Setup & config socket for ED communication as client
     s = socket.socket()
+    s.setblocking(1) # important
     host = socket.gethostname()
     port = 9981
     s.connect((host, port))
+    #s.setblocking(1) # important
 
-	# Open the database for the users waiting for a notification
-    file_path = "mockDB.json"
-    with open(file_path, 'r') as openfile:
-        data = json.load(openfile)
-    
-    def send_email(objects):
+	#def send_email(objects):
 
-        # Poll the Ed once (final return val is string = "True" or = "False")
-        pollresult = pollTheED(s, objects['name'])
+    while True:
 
-        if(pollresult == "True"):
+		# Open the database for the users waiting for a notification
+        file_path = "mockDB.json"
+        with open(file_path, 'r') as openfile:
+            data = json.load(openfile)
+		# M4 todo: shouldn't there be a 'close file' somewhere?
+		
+		# Loop through each person awaiting a notification:
+        for user in data:
     
-            sender = 'mistered.health@gmail.com'  #email is sent from
-            password = 'xquy owpn pqqe ctis'  #password needed to access gmail to send email
-            receiver = objects['email']  #recipient of email (taken from json for mock)
-            subject = 'Mister Ed: Queue Update' #subject of email
-            body = objects['name']+", you are next to receive treatment at " + objects['nearestED'] + ".\nPlease travel there now." #mail script
+            # Poll the Ed once (final return val is string = "True" or = "False")
+            pollresult = pollTheED(s, user['name'])
+
+            if(pollresult == "True"):
     
-            email_factory = EmailFactory()
-            email_factory.send_email(sender, password, receiver, subject, body)
+                sender = 'mistered.health@gmail.com'  #email is sent from
+                password = 'xquy owpn pqqe ctis'  #password needed to access gmail to send email
+                receiver = user['email']  #recipient of email (taken from json for mock)
+                subject = 'Mister Ed: Queue Update' #subject of email
+                body = user['name']+", you are next to receive treatment at " + user['nearestED'] + ".\nPlease travel there now." #mail script
+    
+                email_factory = EmailFactory()
+                email_factory.send_email(sender, password, receiver, subject, body)
 
 if __name__ == "__main__":
     main()
