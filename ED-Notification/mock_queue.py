@@ -8,8 +8,11 @@
 #   (COMPLETE) TBTL.kick(patient) -> remove patient from TBTL, then dequeue item on queue and put into TBTL
 #   (COMPLETE) for now M3; have kick place patient at end of queue (infinite loop)
 
+import socket
+import threading
 import json
 import time
+import sys
 
 file_path = "mockDB.json"
 
@@ -131,20 +134,9 @@ mockNoiseDB = [
 {"name": "Emiree", "email": "<INSERT YOUR EMAIL>", "nearestED": "Royal Jubilee Hospital", "EDqueue": 2}, 
 {"name": "Samuel", "email": "<INSERT YOUR EMAIL>", "nearestED": "Oak Bay Urgent Care Clinic", "EDqueue": 0}]
 
-def main():
+
+def cycleEDqueue(a):
   interval = 30
-  print("Starting ED usage... ")
-  time.sleep(1)
-  print("TBTL initialization")
-  a = TBTL()
-  a.add(data)
-  a.queue.add(mockNoiseDB)
-
-  print("----------------------------------------")
-  a.print_list()
-  print("----------------------------------------")
-  a.print_queue()
-
   while True:
     print(f"----------------------------------------\nKicking :", a.list[0])
     print("----------------------------------------\nPost-Kick:")
@@ -156,6 +148,65 @@ def main():
     print("----------------------------------------")
     print(f"Sleeping for ", interval, " seconds")
     time.sleep(interval)
+
+# Thread function that recives poll requests and returns whether or not the polled target is in the TBTL
+def listenForPoll(s, a):
+  while True:
+    # Wait for a data package to be sent to us
+    recieved_data = s.recv(1024)
+    recieved_data = json.loads(recieved_data.decode())
+
+    print("+++")
+    print("Responding to poll request...")
+    print("+++")
+
+    in_tbtl = "False" #M4 todo: check if bools can be json'd & socketed
+    for person in a.list:
+      if person['name'] == recieved_data.get("name"):
+        in_tbtl = "True"
+
+    package = json.dumps({"should_send_notif": in_tbtl})
+    s.send(package.encode())
+
+def main():
+  # Setup & config socket for ED communication as client
+  server = socket.socket()
+  host = socket.gethostname()
+  port = 9981
+  server.bind((host, port))
+
+  # Wait for MISTER ED to ask to connect to socket
+  print("Awaiting socket connection request...")
+  server.listen(1)
+  s, addr = server.accept()
+  print("Request accepted")
+  print("")
+
+  # Setup & config the ED object
+  print("Starting ED usage... ")
+  time.sleep(1)
+  print("TBTL initialization")
+  a = TBTL()
+  a.add(data)
+  a.queue.add(mockNoiseDB)
+  print("")
+
+  print("----------------------------------------")
+  a.print_list()
+  print("----------------------------------------")
+  a.print_queue()
+
+  # Attempt a connection to the ED server
+  try:
+    # Create and start the thread that manages the queue
+    queuethread = threading.Thread(target=cycleEDqueue, args=(a,))
+    queuethread.start()
+
+    # Create and start the thread that sends data across the socket
+    listenthread = threading.Thread(target=sendPollRequest, args=(s, a))
+    listenthread.start()
+  except Exception:
+    sys.exit(1)
 
 
 

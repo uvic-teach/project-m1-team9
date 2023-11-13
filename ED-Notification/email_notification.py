@@ -1,6 +1,7 @@
 from email.message import EmailMessage
 import smtplib
 import json
+import socket
 
 class EmailFactory:
     def create_email(self, sender, password, receiver, subject, body):
@@ -19,15 +20,38 @@ class EmailFactory:
             smtp.login(sender, password)
             smtp.sendmail(sender, receiver, message.as_string())
 
+
+def pollTheED(s, name):
+
+    # Package out the string and send it across the socket
+    package = json.dumps({"name": name})
+    s.send(package.encode())
+
+    # Wait for a response from the ED
+    recieved_data = s.recv(1024)
+    recieved_data = json.loads(recieved_data.decode())
+
+    return recieved_data.get("should_send_notif")
+
 def main():
+
+    # Setup & config socket for ED communication as client
+    s = socket.socket()
+    host = socket.gethostname()
+    port = 9981
+    s.connect((host, port))
+
+	# Open the database for the users waiting for a notification
     file_path = "mockDB.json"
-    
     with open(file_path, 'r') as openfile:
         data = json.load(openfile)
     
     def send_email(objects):
-    
-        if(objects['EDqueue'] == 0):
+
+        # Poll the Ed once (final return val is string = "True" or = "False")
+        pollresult = pollTheED(s, objects['name'])
+
+        if(pollresult == "True"):
     
             sender = 'mistered.health@gmail.com'  #email is sent from
             password = 'xquy owpn pqqe ctis'  #password needed to access gmail to send email
