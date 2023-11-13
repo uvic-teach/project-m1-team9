@@ -61,6 +61,8 @@ def main():
 
             if(pollresult == "True"):
     
+                print("Time to send an email! To " + user['name'])
+
                 sender = 'mistered.health@gmail.com'  #email is sent from
                 password = 'xquy owpn pqqe ctis'  #password needed to access gmail to send email
                 receiver = user['email']  #recipient of email (taken from json for mock)
@@ -68,7 +70,7 @@ def main():
                 body = user['name']+", you are next to receive treatment at " + user['nearestED'] + ".\nPlease travel there now." #mail script
     
                 email_factory = EmailFactory()
-                email_factory.send_email(sender, password, receiver, subject, body)
+                email_factory.send_email(sender, password, receiver, subject, body)		
 
 if __name__ == "__main__":
     main()
