@@ -1,6 +1,17 @@
-TODO: Continually update as project evolves.
+# Mr. ED
 
-# README
+![badge](https://github.com/uvic-teach/project-m1-team9/actions/workflows/mred.yml/badge.svg)
+
+A Django based user interface for the Mr. ED project. Acts as a bridge for the user to access all microservices.
+
+Hosted on Google Cloud. Visit [here](https://mr-ed-dot-extreme-lodge-401820.wl.r.appspot.com/mred/)!
+
+The microservices incorporated are:
+- User Management Microservice
+- Notifications Microservice
+- ED Maps Microservice
+
+Each microservice has their own directory, and associated README.
 
 ## Feature Contribution
 
