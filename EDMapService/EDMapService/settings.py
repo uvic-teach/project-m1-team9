@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*'] # <- FOR DEMO PURPOSES ONLY. NOT SECURE.
 
-
 # Application definition
 
 INSTALLED_APPS = [

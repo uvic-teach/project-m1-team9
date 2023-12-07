@@ -8,4 +8,10 @@ EDMapService/EDMapWebapp/migrations/**
 # EDMap sqlite file
 EDMapService/db.sqlite3
 
+# MrED Django migrations folder
+MrED/MrEDWebapp/migrations/**
+
+# MrED sqlite file
+MrED/db.sqlite3
+
 .vscode/
