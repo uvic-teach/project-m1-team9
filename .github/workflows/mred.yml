@@ -1,4 +1,4 @@
-name: EDMap Service CI & CD
+name: Mr. ED CI & CD
 
 on:
   push:
@@ -22,12 +22,12 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
-        cd EDMapService
+        cd MrED
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        cd EDMapService
+        cd MrED
         python3 manage.py test
 
   deploy:
@@ -48,5 +48,5 @@ jobs:
 
     - name: 'Use gcloud CLI'
       run: |
-        cd EDMapService
+        cd MrED
         gcloud app deploy
