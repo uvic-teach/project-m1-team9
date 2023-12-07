@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MrEDWebapp.views import HomeView
+from MrEDWebapp.views import HomeView, SignInView, TriageResultView, NotificationSentView
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("mred/", HomeView.as_view()),
+    path("mred/sign-in/", SignInView.as_view()),
+    path("mred/triage-result/", TriageResultView.as_view()),
+    path("mred/notification-sent/", NotificationSentView.as_view()),
 ]
