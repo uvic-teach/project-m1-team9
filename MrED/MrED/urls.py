@@ -21,5 +21,5 @@ from MrEDWebapp.views import HomeView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("mr-ed/", HomeView.as_view()),
+    path("mred/", HomeView.as_view()),
 ]
