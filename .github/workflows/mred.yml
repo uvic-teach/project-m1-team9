@@ -49,4 +49,4 @@ jobs:
     - name: 'Use gcloud CLI'
       run: |
         cd MrED
-        gcloud app deploy
+        gcloud app deploy --version=v-mred-dev

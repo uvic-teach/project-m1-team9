@@ -1,6 +1,6 @@
 service: mr-ed
 runtime: python39
-entrypoint: gunicorn -b :$PORT EDMapService.wsgi
+entrypoint: gunicorn -b :$PORT MrED.wsgi
 
 instance_class: F2
 
