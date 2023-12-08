@@ -5,21 +5,27 @@
 <div id="map" style="height: 800px; width: 1000px"></div>
 
 {{ coordinates|json_script:"coordinatesdata" }}
+{{ view_coordinate|json_script:"view_coordinate_json" }}
 
 <script>
+    // coordinates: An array of all parsed ED coordinate entries
     const coordinates = JSON.parse(document.getElementById('coordinatesdata').textContent);
-    var map = L.map('map').setView([48.429, -123.357], 14);
+    // view_coordinate: Location to start the user on for the generated map
+    const view_coordinate = JSON.parse(document.getElementById('view_coordinate_json').textContent);
+
+    // Create map with given view coordinate
+    var map = L.map('map').setView(view_coordinate, 13);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    
+    // Create an exmaple marker
+    // TODO: Replace this with logic to create a marker for all entries in "coordinate" array.
+    // TODO: Add a popup including the ED's name to every ED marker.
     var marker = L.marker([48.429, -123.357]).addTo(map);
-    marker.bindPopup("<b>Hello world!</b><br>I am an example ED location.").openPopup();
-
-    console.log(coordinates);
+    marker.bindPopup("<b>Hello world!</b><br>I am an example ED location.");
 
 </script>
 {% endblock %}

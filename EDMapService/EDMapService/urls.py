@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from EDMapWebapp.views import MapView
+from EDMapWebapp.views import VictoriaView, SidneyView, NanaimoView, VancouverView
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("edmap/", MapView.as_view()),
+    path("edmap/", VictoriaView.as_view()),
+    path("edmap/victoria/", VictoriaView.as_view()),
+    path("edmap/sidney/", SidneyView.as_view()),
+    path("edmap/nanaimo/", NanaimoView.as_view()),
+    path("edmap/vancouver/", VancouverView.as_view()),
 ]
