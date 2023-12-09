@@ -21,11 +21,14 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    // Create an exmaple marker
-    // TODO: Replace this with logic to create a marker for all entries in "coordinate" array.
-    // TODO: Add a popup including the ED's name to every ED marker.
-    var marker = L.marker([48.429, -123.357]).addTo(map);
-    marker.bindPopup("<b>Hello world!</b><br>I am an example ED location.");
+    coordinates.forEach(coord => {
+        const hospitalName = coord[0];                              //gets name
+        const latitude = coord[1];                                  //gets latitude
+        const longitude = coord[2];                                 //gets longitude
+
+        const marker = L.marker([latitude, longitude]).addTo(map);  //adds marker with information
+        marker.bindPopup(hospitalName);                             //adds popup to the marker
+    });
 
 </script>
 {% endblock %}
