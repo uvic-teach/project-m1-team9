@@ -21,13 +21,18 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
     coordinates.forEach(coord => {
         const hospitalName = coord[0];                              //gets name
         const latitude = coord[1];                                  //gets latitude
         const longitude = coord[2];                                 //gets longitude
+        const load = getRandomInt(100);                             //get a random load percentage
 
-        const marker = L.marker([latitude, longitude]).addTo(map);  //adds marker with information
-        marker.bindPopup(hospitalName);                             //adds popup to the marker
+        const marker = L.marker([latitude, longitude]).addTo(map);      //adds marker with information
+        marker.bindPopup(`${hospitalName}<br>Current load: <b>${load}%</b>`);   //adds popup to the marker
     });
 
 </script>
