@@ -22,3 +22,8 @@ class CustomUser(AbstractUser):
         blank=True,
         related_name="custom_user_set"  # Use a custom related_name
     )
+
+class ServiceAccount(models.Model):
+    service_name = models.CharField(max_length=100, unique=True)
+    token = models.CharField(max_length=100, unique=True)
+

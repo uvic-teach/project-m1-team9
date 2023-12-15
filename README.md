@@ -88,3 +88,41 @@ A microservice designed to display a map of nearby Emergency Departments based o
 6. Make a curl request to check an endpoint
     ```bash
     curl http://localhost:8000/eduser/user/1/
+
+### Testing Service Tokens with the Application
+
+To contribute to this application and test service tokens, follow these concise steps:
+
+1. **Generate a Service Token:**
+   - Use the Django admin panel or Django shell to generate a token for your service. 
+   - For Django shell:
+     ```bash
+     python manage.py shell
+     ```
+     Then in the shell:
+     ```python
+     from EDUserManagementApp.models import ServiceAccount
+     ServiceAccount.objects.create(service_name='YourServiceName', token='your_generated_token')
+     ```
+
+2. **Start the Django Development Server:**
+   - Run the Django development server:
+     ```bash
+     python manage.py runserver
+     ```
+
+3. **Make a `curl` Request:**
+   - Use `curl` to make a request to the application, including the service token in the request header.
+   - Replace `your_generated_token` with the token from step 1 and `your_endpoint` with the specific endpoint you wish to test:
+     ```bash
+     curl -H "Authorization: your_generated_token" http://localhost:8000/your_endpoint/
+     ```
+
+4. **Analyze the Response:**
+   - A successful response indicates that the service token is working.
+   - An unauthorized error (status code 401) indicates an invalid or missing token.
+
+Please ensure your service name and generated token are kept secure and are used in accordance with our application's security guidelines.
+
+TODO: In the future we will need to setup repository secrets with unique keys for each service, and inject them into the application during the GitHub Actions
+workflow for each microservice.
