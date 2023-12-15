@@ -165,6 +165,7 @@ def listenForPoll(s, a):
     for person in a.list:
       if person['name'] == recieved_data: #.get("name"):
         in_tbtl = "True"
+        a.kick(recieved_data)
 
     #package = json.dumps({"should_send_notif": in_tbtl})
     s.send(in_tbtl.encode())
