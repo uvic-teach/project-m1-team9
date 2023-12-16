@@ -1,5 +1,5 @@
 """
-URL configuration for EDMapService project.
+URL configuration for MrED project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,14 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from EDMapWebapp.views import VictoriaView, SidneyView, NanaimoView, VancouverView
+from MrEDWebapp.views import HomeView, SignInView, TriageResultView, NotificationSentView
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("edmap/", VictoriaView.as_view()),
-    path("edmap/victoria/", VictoriaView.as_view()),
-    path("edmap/sidney/", SidneyView.as_view()),
-    path("edmap/nanaimo/", NanaimoView.as_view()),
-    path("edmap/vancouver/", VancouverView.as_view()),
+    path("mred/", HomeView.as_view()),
+    path("mred/sign-in/", SignInView.as_view()),
+    path("mred/triage-result/", TriageResultView.as_view()),
+    path("mred/notification-sent/", NotificationSentView.as_view()),
 ]

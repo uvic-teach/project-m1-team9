@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load mr_ed_extras %}
+<div class="container">
+    <div class="text-center mb-5" style="padding-top: 200px;">
+        <h1 class="display-1">Welcome to Mr. ED</h1>
+    </div>
+
+    <div class="container text-center pt-5">
+        <a class="btn btn-primary btn-lg mb-4" href="/mred/triage-result/" role="button">Take a Triage</a><br>
+        <p>
+            <button class="btn btn-secondary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap">
+                Find an ED
+            </button>
+        </p>
+        <div class="collapse mt-4 mb-5" id="collapseMap">
+            <div class="card text-center" style="margin-left: 15%; margin-right: 15%;">
+                <div class="card-header">
+                  <h3>Select your location</h3>
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-primary btn-lg mt-1" href="https://edmapservice-dot-extreme-lodge-401820.wl.r.appspot.com/edmap/victoria/" role="button">Victoria</a>
+                    <a class="btn btn-primary btn-lg mt-1" href="https://edmapservice-dot-extreme-lodge-401820.wl.r.appspot.com/edmap/sidney/" role="button">Sydney</a>
+                    <a class="btn btn-primary btn-lg mt-1" href="https://edmapservice-dot-extreme-lodge-401820.wl.r.appspot.com/edmap/nanaimo/" role="button">Nanaimo</a>
+                    <a class="btn btn-primary btn-lg mt-1" href="https://edmapservice-dot-extreme-lodge-401820.wl.r.appspot.com/edmap/vancouver/" role="button">Vancouver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

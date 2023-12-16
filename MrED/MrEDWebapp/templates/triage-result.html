@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load mr_ed_extras %}
+<div class="container">
+    <div class="text mb-5" style="padding-top: 200px;">
+        <h1 class="display-1">Triage complete!</h1>
+        <p class="lead">
+            Would you like to be notified?
+        </p>
+        <a class="btn btn-primary btn-lg" href="/mred/notification-sent/" role="button">Yes</a>
+        <a class="btn btn-secondary btn-lg" href="/mred/" role="button">No</a>
+    </div>
+</div>
+{% endblock %}

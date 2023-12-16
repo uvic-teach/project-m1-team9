@@ -2,24 +2,38 @@
 
 {% block content %}
 {% load edmap_extras %}
-<div id="map" style="height: 400px; width: 500px"></div>
+<div id="map" style="height: 800px; width: 1000px"></div>
 
 {{ coordinates|json_script:"coordinatesdata" }}
+{{ view_coordinate|json_script:"view_coordinate_json" }}
 
 <script>
+    // coordinates: An array of all parsed ED coordinate entries
     const coordinates = JSON.parse(document.getElementById('coordinatesdata').textContent);
-    var map = L.map('map').setView([48.407, -123.328], 10);
+    // view_coordinate: Location to start the user on for the generated map
+    const view_coordinate = JSON.parse(document.getElementById('view_coordinate_json').textContent);
+
+    // Create map with given view coordinate
+    var map = L.map('map').setView(view_coordinate, 13);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    
-    var marker = L.marker([48.407, -123.328]).addTo(map);
-    marker.bindPopup("<b>Hello world!</b><br>I am an example ED location.").openPopup();
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
 
-    console.log(coordinates);
+    coordinates.forEach(coord => {
+        const hospitalName = coord[0];                              //gets name
+        const latitude = coord[1];                                  //gets latitude
+        const longitude = coord[2];                                 //gets longitude
+        const load = getRandomInt(100);                             //get a random load percentage
+
+        const marker = L.marker([latitude, longitude]).addTo(map);      //adds marker with information
+        marker.bindPopup(`${hospitalName}<br>Current load: <b>${load}%</b>`);   //adds popup to the marker
+    });
 
 </script>
 {% endblock %}

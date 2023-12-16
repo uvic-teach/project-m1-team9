@@ -65,9 +65,10 @@ class ED_list:
   
   #verified
   def print_list(self):
-    print(f"This is ", self, "'s list")
+    #print(f"This is ", self, "'s list")
     for item in self.list:
-      print(item)
+      #print(item)
+      pass
 
   
   def clear(self):
@@ -101,10 +102,12 @@ class TBTL(ED_list):
   #verified
   def add(self, item):
     if len(self.list) >= self.capacity:
-      print("TBTL is full")
+      pass
+	  #print("TBTL is full")
     elif isinstance(item, list):
       if len(item) > (self.capacity - len(self.list)):
-        print(f"TBTL can't fit: ", item)
+        #print(f"TBTL can't fit: ", item)
+        pass
       else:
         super().add(item)
     else:
@@ -115,7 +118,7 @@ class TBTL(ED_list):
     # if infinite loop of patients isn't required, remove the patient variable
     patient = self.remove(key)
     if patient == None:
-      print(f"No match in TBTL for: ", key)
+      #print(f"No match in TBTL for: ", key)
       return
     # temporary infinite loop of rotating patients for development/demonstration purposes
     self.queue.add(patient)
@@ -138,38 +141,44 @@ mockNoiseDB = [
 def cycleEDqueue(a):
   interval = 30
   while True:
-    print(f"----------------------------------------\nKicking :", a.list[0])
-    print("----------------------------------------\nPost-Kick:")
-    print("----------------------------------------")
+    #print(f"----------------------------------------\nKicking :", a.list[0])
+    #print("----------------------------------------\nPost-Kick:")
+    #print("----------------------------------------")
     a.kick(a.list[0])
     a.print_list()
-    print("----------------------------------------")
+    #print("----------------------------------------")
     a.print_queue()
-    print("----------------------------------------")
-    print(f"Sleeping for ", interval, " seconds")
+    #print("----------------------------------------")
+    #print(f"Sleeping for ", interval, " seconds")
     time.sleep(interval)
 
 # Thread function that recives poll requests and returns whether or not the polled target is in the TBTL
 def listenForPoll(s, a):
-  print("Started listening for the poll reqs")
+  #print("Started listening for the poll reqs")
   while True:
     # Wait for a data package to be sent to us
     recieved_data = s.recv(1024).decode()
     #recieved_data = json.loads(recieved_data.decode())
 
-    print("+++")
-    print("Responding to poll request...")
-    print("+++")
+    #print("queue")
+    if (recieved_data == "quit"):
+      #print("QUIT")
+      return
+
+    #print("+++")
+    #print("Responding to poll request...")
+    #print("+++")
 
     in_tbtl = "False" #M4 todo: check if bools can be json'd & socketed
     for person in a.list:
       if person['name'] == recieved_data: #.get("name"):
         in_tbtl = "True"
+        a.kick(recieved_data)
 
     #package = json.dumps({"should_send_notif": in_tbtl})
     s.send(in_tbtl.encode())
 
-def main():
+def startMockQueue():
   # Setup & config socket for ED communication as client
   sside = socket.socket()
   host = socket.gethostname()
@@ -177,26 +186,24 @@ def main():
   sside.bind((host, port))
 
   # Wait for MISTER ED to ask to connect to socket
-  print("Awaiting socket connection request...")
+  #print("Awaiting socket connection request...")
   sside.listen(1)
   s, addr = sside.accept()
-  print("Request accepted")
-  print("")
+  #print("Request accepted")
+  #print("")
 
   # Setup & config the ED object
-  print("Starting ED usage... ")
+  #print("Starting ED usage... ")
   time.sleep(1)
-  print("TBTL initialization")
+  #print("TBTL initialization")
   a = TBTL()
   a.add(data)
   a.queue.add(mockNoiseDB)
-  print("")
+  #print("")
 
-  #print("----------------------------------------")
-  #a.print_list()
-  #print("----------------------------------------")
-  #a.print_queue()
+  listenForPoll(s, a)
 
+  '''
   # Attempt a connection to the ED server
   try:
     # Create and start the thread that manages the queue
@@ -208,8 +215,10 @@ def main():
     listenthread.start()
   except Exception:
     sys.exit(1)
+  '''
 
-
+  #print("done queue")
+  return
 
 def tests():
   print("Sanity testing via prints")
@@ -379,6 +388,8 @@ def tests():
   # TBTL.kick() verifying, verified it refills queue, kicks by element
   # doesn't kick anything if nothing matches key, properly rotates items
 
+def main():
+  pass
 
 if __name__ == "__main__":
     main()
