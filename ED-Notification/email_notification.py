@@ -33,6 +33,7 @@ def pollTheED(s, name):
 
     return recieved_data #recieved_data.get("should_send_notif")
 
+
 def main():
 
     # Setup & config socket for ED communication as client
@@ -45,13 +46,14 @@ def main():
 
 	#def send_email(objects):
 
-    while True:
+	# Open the database for the users waiting for a notification
+	# Extracted outside of the infinite loop to prevent duplicate emails from being sent.
+    file_path = "mockDB.json"
+    with open(file_path, 'r') as openfile:
+        data = json.load(openfile)
+        openfile.close()
 
-		# Open the database for the users waiting for a notification
-        file_path = "mockDB.json"
-        with open(file_path, 'r') as openfile:
-            data = json.load(openfile)
-		# M4 todo: shouldn't there be a 'close file' somewhere?
+    while True:
 		
 		# Loop through each person awaiting a notification:
         for user in data:
@@ -70,7 +72,10 @@ def main():
                 body = user['name']+", you are next to receive treatment at " + user['nearestED'] + ".\nPlease travel there now." #mail script
     
                 email_factory = EmailFactory()
-                email_factory.send_email(sender, password, receiver, subject, body)		
+                email_factory.send_email(sender, password, receiver, subject, body)
+
+				# Quick list slice with list comprehension to remove the user who we just sent an email to.
+                data[:] = [u for u in data if not (u['name'] == user['name'])]
 
 if __name__ == "__main__":
     main()

@@ -1,8 +1,8 @@
 import json
 
-data = [{"name": "John", "email": "<INSERT YOUR EMAIL>", "nearestED": "Victoria General Hopsital", "EDqueue": 5}, 
-{"name": "Emily", "email": "<INSERT YOUR EMAIL>", "nearestED": "Royal Jubilee Hospital", "EDqueue": 2}, 
-{"name": "Sam", "email": "<INSERT YOUR EMAIL>", "nearestED": "Oak Bay Urgent Care Clinic", "EDqueue": 0}]
+data = [{"name": "John", "email": "mistered.health@gmail.com", "nearestED": "Victoria General Hopsital", "EDqueue": 5}, 
+{"name": "Emily", "email": "mistered.health@gmail.com", "nearestED": "Royal Jubilee Hospital", "EDqueue": 2}, 
+{"name": "Sam", "email": "mistered.health@gmail.com", "nearestED": "Oak Bay Urgent Care Clinic", "EDqueue": 0}]
 
 
 file_path = "mockDB.json"
