@@ -33,8 +33,10 @@ def pollTheED(s, name):
 
     return recieved_data #recieved_data.get("should_send_notif")
 
+def endPolling(s):
+    s.send("quit".encode())
 
-def main():
+def startEmailNotif():
 
     # Setup & config socket for ED communication as client
     s = socket.socket()
@@ -55,6 +57,8 @@ def main():
 
     while True:
 		
+        #print("email")
+
 		# Loop through each person awaiting a notification:
         for user in data:
     
@@ -63,7 +67,7 @@ def main():
 
             if(pollresult == "True"):
     
-                print("Time to send an email! To " + user['name'])
+                #print("Time to send an email! To " + user['name'])
 
                 sender = 'mistered.health@gmail.com'  #email is sent from
                 password = 'xquy owpn pqqe ctis'  #password needed to access gmail to send email
@@ -76,6 +80,14 @@ def main():
 
 				# Quick list slice with list comprehension to remove the user who we just sent an email to.
                 data[:] = [u for u in data if not (u['name'] == user['name'])]
+
+        if (len(data) == 0):
+            endPolling(s)
+            #print("done email")
+            return
+
+def main():
+    pass
 
 if __name__ == "__main__":
     main()
