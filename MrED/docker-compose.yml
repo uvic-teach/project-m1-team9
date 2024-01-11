@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  run:
+    build: .
+    command: bash -c "python3 manage.py runserver 0.0.0.0:8000"
+    container_name: mred_service
+    volumes:
+      - .:/mred_service
+    ports:
+      - "8000:8000"
